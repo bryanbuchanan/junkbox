@@ -1,0 +1,162 @@
+/* RESEN */
+/* Item Listing
+------------------------------------------------------------------------------- */		
+		
+
+	.grid {
+	
+		clear: left;
+		float: left;
+		width: 98%;
+		margin: 50px 0 0 2%;
+		padding-bottom: 175px;
+	
+		}
+		
+	.grid li {
+	
+		position: relative;
+		float: left;
+		width: 270px;
+		height: 288px;
+		margin: 0 15px 18px 0;
+		border: 4px solid transparent;
+		border-radius: 5px;
+		-webkit-transition: background-color .15s ease-out;
+		-moz-transition: background-color .15s ease-out;
+		
+		}
+	
+	.grid a {
+	
+		display: block;
+		padding: 5px;
+		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	
+		}
+		
+	.grid strong {
+	
+		display: block;
+		width: 100%;
+		position: absolute;
+		font-style: normal;
+		font-weight: normal;
+		bottom: 0;
+		left: 0;
+	
+		}
+		
+	.grid strong a {
+	
+		border-bottom: 1px solid transparent;
+	
+		}
+		
+	.grid em,
+	.grid span {
+	
+		display: none;
+	
+		}
+		
+		
+/* Hover */
+
+
+	.grid .selected {
+	
+		position: relative;
+		z-index: 100;
+		border: 4px solid #666;
+		background: #222;
+	
+		}
+			
+	.grid .hover {
+	
+		background: #222;
+
+		}
+		
+	.grid .hover a,
+	.grid .selected a {
+	
+		color: #ccc;
+	
+		}
+		
+	.grid .hover em {
+	
+		display: block;
+		position: absolute;
+		bottom: -20px;
+		left: 10%;
+		width: 40%;
+		font-style: normal;
+		color: #444;
+		text-align: left;
+
+		}
+		
+	.grid .hover span {
+	
+		display: block;
+		position: absolute;
+		bottom: -20px;
+		right: 10%;
+		width: 40%;
+		font-style: normal;
+		color: #444;
+		text-align: right;
+	
+		}	
+	
+	
+/* Edit */
+
+
+	.edit .grid a {
+	
+		cursor: default;
+	
+		}
+		
+
+/* Rename */
+
+
+	.edit .grid strong a {
+	
+		cursor: text;
+	
+		}
+		
+	.edit .grid form {
+	
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 10px 0 8px;
+	
+		}
+		
+	.edit .grid input[type="text"] {
+	
+		width: 90%;
+		border: none;
+		margin: 0 5%;
+		padding: 0 0 2px;
+		color: #ccc;
+		background: none;
+		text-align: center;
+		border-bottom: 1px dashed #666;
+		outline: none;
+		font: normal 11px/13px "Helvetica Neue", Helvetica, sans-serif;
+		letter-spacing: 1px;
+		
+		}
+

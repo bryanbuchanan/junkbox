@@ -1,0 +1,483 @@
+/* RESEN */	
+/* Layout
+------------------------------------------------------------------------------- */
+		
+		
+	html,
+	body {
+	
+		height: 100%;
+		
+		}
+		
+	body {
+	
+		background: #121212;
+		padding-bottom: 30px;
+	
+		}
+
+	
+/* Type and Headings
+------------------------------------------------------------------------------- */
+
+
+	body {
+	
+		font: normal 11px/13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color: #ccc;
+	
+		}
+		
+		
+/* Links
+------------------------------------------------------------------------------- */
+		
+		
+	 a {
+	
+		text-decoration: none;
+		color: #555;
+	
+		}
+		
+	 a:hover {
+	
+		color: #ccc;
+	
+		}
+			
+
+/* Buttons
+------------------------------------------------------------------------------- */
+
+
+	a.button,
+	input[type="submit"],
+	.inactive .button:active {
+	
+		font: bold 11px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+		float: left;
+		background: url('../images/bg-button.png') 0 center repeat-x;
+		font-weight: bold;
+		color: #222;
+		text-shadow: rgba(255, 255, 255, .3) 0px 1px 0px;
+		padding: 5px 10px;
+		border-radius: 3px;
+		border: 1px solid #333;
+		cursor: pointer;
+		background-image: -webkit-linear-gradient(#888 0%, #555 100%);
+		
+		}
+		
+	.button span {
+	
+		display: block;
+	
+		}
+		
+	.button:active,
+	input[type="submit"]:active {
+	
+		color: #ccc;
+		text-shadow: rgba(0, 0, 0, .9) 0px 1px 1px;
+		background-image: -webkit-linear-gradient(#444 0%, #555 100%);
+	
+		}
+		
+	.inactive {
+
+		opacity: .4;
+	
+		}
+		
+	.inactive a {
+	
+		cursor: default;
+	
+		}
+
+
+/* Tools
+------------------------------------------------------------------------------- */	
+
+
+	#tools {
+	
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 102;
+		float: left;
+		width: 90%;
+		padding: 5px 5%;
+		border: 1px solid #444;
+		-webkit-box-shadow: 0 0 20px #000;
+		-moz-box-shadow: 0 0 20px #000;
+		background-image: -webkit-linear-gradient(#666 0%, #333 100%);
+		
+		}
+		
+	#tools li {
+	
+		float: left;
+		margin-right: 5px;
+		position: relative;
+	
+		}
+		
+	#back a span {
+	
+		padding-left: 16px;
+		background: url('../images/a-back.png') 0 center no-repeat;
+	
+		}
+		
+	#back .droppable {
+		
+		background: #888;
+
+		}
+		
+	#file a span {
+	
+		padding-left: 16px;
+		background: url('../images/a-file.png') 0 center no-repeat;
+	
+		}
+		
+	#folder a span {
+	
+		padding-left: 16px;
+		background: url('../images/a-folder.png') 0 center no-repeat;
+	
+		}
+		
+	#tools #search {
+	
+		float: right;
+		display: none;
+	
+		}
+		
+	#tools #resen {
+	
+		float: right;
+	
+		}
+		
+	#resen a {
+	
+		display: block;
+		text-indent: -5000px;
+		width: 31px;
+		height: 27px;
+		background: url('../images/resen.png');
+	
+		}
+		
+		
+/* Sign In */
+
+		
+	#signin form {
+	
+		display: block;
+		display: none;
+	
+		}
+		
+	#signin input[type="text"],
+	#signin input[type="password"] {
+	
+		float: left;
+		font: bold 11px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color: #333;
+		background: #777;
+		border: 1px solid #333;
+		padding: 5px;
+		outline: none;
+
+		}
+		
+	#signin input:focus {
+	
+		background: #999;	
+	
+		}
+		
+	#signin input[type="text"] {
+	
+		border-radius: 3px 0 0 3px;
+		border-right: none;
+	
+		}
+		
+	#signin input[type="password"] {
+	
+		border-left-color: #555;
+		margin-right: 5px;
+		border-radius: 0 3px 3px 0;
+	
+		}
+		
+		
+/* Uploader */
+
+
+	.swfupload {
+	
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		width: 100% !important;
+		height: 100% !important;
+	
+		}
+		
+	#progress {
+	
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 99;
+		width: 100%;
+		height: 100%;
+		background: url('../images/translucent-black.png');
+		display: none;
+	
+		}
+		
+	.progressWrapper {
+	
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 40%;
+		margin: -50px 0 0 -20%;
+		background: url('../images/bg-panel-small.png');
+		padding: 10px 10px 30px;
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+	
+		}
+		
+	.progressContainer {
+	
+		background: url('../images/bg-progress.png');
+		padding: 2px 2px 3px;
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		
+		}
+	
+	.progressBarInProgress,
+	.progressBarComplete {
+	
+		background: url('../images/progress.png');
+		height: 24px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	
+		}
+				
+	.progressBarStatus {
+	
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		font-weight: bold;
+		color: #333;
+		text-shadow: rgba(255,255,255,.3) 0 1px 1px;
+	
+		}
+		
+	.progressName {
+	
+		display: none;
+	
+		}
+	
+	
+/* Sorting */
+	
+	
+	#sort {
+	
+		display: none;
+		margin-top: 9px;
+		margin-left: 25%;
+	
+		}
+		
+	#sort em {
+	
+		font-style: normal;
+		color: #999;
+		margin-right: 5px;
+	
+		}
+		
+	#sort a {
+	
+		display: inline;
+		text-indent: 0;
+		padding: 3px 5px;
+		color: #ccc;
+	
+		}
+		
+	#sort a.selected {
+	
+		cursor: default;
+	
+		}
+
+/* Overlay
+------------------------------------------------------------------------------- */
+		
+		
+	#overlay {
+	
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		text-align: center;
+		background: url('../images/translucent-black.png');
+	
+		}
+		
+		
+/* URL Display */
+
+
+	input.big {
+	
+		margin-top: 30%;
+		outline: none;
+		width: 75%;
+		text-align: center;
+		color: #fff;
+		border: 4px solid #333;
+		background: url('../images/translucent-black.png');
+		font-size: 24px;
+		line-height: 24px;
+		padding: 50px 0;
+		position: relative;
+		z-index: 101;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+
+		}
+			
+		
+/* Right Click Menu */
+
+
+	#rightclick {
+	
+		position: fixed;
+		z-index: 101;
+		border-radius: 5px;
+		overflow: hidden;
+
+		}
+		
+	#rightclick a {
+	
+		display: block;
+		color: #333;
+		background: #efefef;
+		padding: 5px 20px;
+		border-bottom: 1px solid #555;
+		border-left: 2px solid #999;
+		border-right: 2px solid #999;
+
+		}
+		
+	#rightclick li:first-child a {
+
+		border-top: 2px solid #999;
+		padding-top: 10px;
+
+
+		}
+		
+	#rightclick li:last-child a {
+
+		border-bottom: 2px solid #999;
+		padding-bottom: 10px;
+	
+		}
+	
+	#rightclick a:hover {
+	
+		background: #555;
+	
+		}
+
+	#rightclick a:active {
+	
+		background: #777;
+	
+		}
+		
+		
+/* Credit
+------------------------------------------------------------------------------- */
+		
+		
+	#credit {
+        
+		position: fixed;
+		z-index: 103;
+		top: 4px;
+		right: 5%;
+		display: block;
+		text-indent: -5000px;
+		overflow: hidden;
+        width: 31px;
+        height: 27px;
+        background: url('../images/resen.png');
+	
+		}
+		
+		
+/* Upload
+------------------------------------------------------------------------------- */
+		
+
+	#dragging {
+
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 200;
+		outline: 10px solid #00a5e3;
+		outline-offset: -10px;
+
+		}
+		
+		
+/* Debug
+------------------------------------------------------------------------------- */
+				
+				
+	#debug {
+	
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: #444;
+		padding: 20px;
+		z-index: 100;
+	
+		}
