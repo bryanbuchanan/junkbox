@@ -7,7 +7,7 @@ $sort = "name"; // name or date
 $order = "asc"; // asc or desc
 
 // Viewer Accounts
-// $viewer[] = array('visitor1', 'visitor1');
+// $viewer[] = array('name', 'password');
 
 // Admin Accounts (not yet working)
 // $admin[] = array('admin', 'admin');

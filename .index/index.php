@@ -212,11 +212,11 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 	</script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="<?= $home_uri ?>/.index/scripts/functions.js"></script>
-				
+				s
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascripts -->
 	<? endif ?>
-
+	
 </body>
 </html>
 
