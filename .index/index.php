@@ -122,6 +122,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				and $file != ".htaccess"
 				and $file != ".DS_Store"
 				and $file != ".index.php"
+				and $file != ".git"
 				and $file != "thumbs"
 				and substr_count($file, ".thumb") == 0
 				and substr_count($file, ".pureftpd") == 0):
