@@ -26,7 +26,7 @@ $debug = false;
 $home_folder = preg_replace("#/\.index$#", "", dirname(__FILE__));
 $home_uri = preg_replace("#/\.index/index.php$#", "", $_SERVER['PHP_SELF']);
 $uri = preg_replace("#/$#", "", $_SERVER["REQUEST_URI"]);
-$private = (count($viewer) > 0 ? true : false);
+$private = (isset($viewer) and count($viewer) > 0 ? true : false);
 
 // Get page title
 $page_title = str_replace($home_uri, "", $_SERVER['REQUEST_URI']);
@@ -121,8 +121,8 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				and $file != ".index"
 				and $file != ".htaccess"
 				and $file != ".DS_Store"
-				and $file != ".index.php"
 				and $file != ".git"
+				and $file != ".gitignore"
 				and $file != "thumbs"
 				and substr_count($file, ".thumb") == 0
 				and substr_count($file, ".pureftpd") == 0):
