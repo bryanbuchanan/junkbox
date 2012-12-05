@@ -11,19 +11,6 @@
 	}
 
 
-/* Hover
----------------------------------------------------------------- */
-
-
-	function hover() {
-		$('.grid > li').hover(function() {
-			$(this).addClass('hover');
-		}, function() {
-			$(this).removeClass('hover');
-		});
-	}
-
-
 /* Sign In
 ---------------------------------------------------------------- */
 
@@ -97,7 +84,6 @@
 
 	$(document).ready(function() {
 	
-		hover();
 		icons();
 		signIn();
 		$('.inactive a').click(function() { return false; });

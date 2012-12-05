@@ -15,25 +15,38 @@
 		
 	.grid li {
 	
-		position: relative;
 		float: left;
-		width: 270px;
-		height: 288px;
-		margin: 0 15px 18px 0;
-		border: 4px solid transparent;
-		border-radius: 5px;
-		-webkit-transition: background-color .15s ease-out;
-		-moz-transition: background-color .15s ease-out;
+		margin: 0 15px 20px 0;
+		position: relative;
 		
 		}
 	
 	.grid a {
 	
+		position: relative;
 		display: block;
-		padding: 5px;
+		width: 270px;
+		height: 288px;
+		border: 4px solid transparent;
+		border-radius: 5px;
+		-webkit-transition: background-color .15s ease-out;
+		-moz-transition: background-color .15s ease-out;
 		text-align: center;
-		overflow: hidden;
 		text-overflow: ellipsis;
+	
+		}
+		
+	.grid .image {
+	
+		width: 100%;
+		height: 270px;
+		line-height: 270px;
+	
+		}
+		
+	.grid img {
+	
+		vertical-align: middle;
 	
 		}
 		
@@ -41,54 +54,12 @@
 	
 		display: block;
 		width: 100%;
-		position: absolute;
 		font-style: normal;
 		font-weight: normal;
-		bottom: 0;
-		left: 0;
 	
 		}
 		
-	.grid strong a {
-	
-		border-bottom: 1px solid transparent;
-	
-		}
-		
-	.grid em,
-	.grid span {
-	
-		display: none;
-	
-		}
-		
-		
-/* Hover */
-
-
-	.grid .selected {
-	
-		position: relative;
-		z-index: 100;
-		border: 4px solid #666;
-		background: #222;
-	
-		}
-			
-	.grid .hover {
-	
-		background: #222;
-
-		}
-		
-	.grid .hover a,
-	.grid .selected a {
-	
-		color: #ccc;
-	
-		}
-		
-	.grid .hover em {
+	.grid em {
 	
 		display: block;
 		position: absolute;
@@ -98,10 +69,12 @@
 		font-style: normal;
 		color: #444;
 		text-align: left;
+		display: none;
 
 		}
 		
-	.grid .hover span {
+		
+	.grid span {
 	
 		display: block;
 		position: absolute;
@@ -111,6 +84,30 @@
 		font-style: normal;
 		color: #444;
 		text-align: right;
+		display: none;
+	
+		}
+		
+		
+/* Hover */
+
+			
+	.grid a:hover {
+
+		color: #ccc;
+		background: #222;
+
+		}
+		
+	.grid a:hover em {
+	
+		display: block;
+
+		}
+		
+	.grid a:hover span {
+	
+		display: block;
 	
 		}	
 	

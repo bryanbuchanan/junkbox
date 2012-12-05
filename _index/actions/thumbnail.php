@@ -5,6 +5,8 @@ ini_set("memory_limit", "200M");
 
 if ($_POST):
 
+	include "../config.php";
+
 	// Get file details
 	$file = $_POST['file'];
 	$path_info = pathinfo($file);
@@ -12,10 +14,10 @@ if ($_POST):
 	$name = preg_replace("#\." . $ext . "$#i", "", $file);	
 	
 	// Get locations
-	$home_folder = preg_replace("#/\_index/actions$#", "", dirname(__FILE__));
+	$home_folder = preg_replace("#/$index_folder/actions$#", "", dirname(__FILE__));
 	$current_path = $_POST['current_path'];
 	$original = "$home_folder/$current_path/$file";
-	$thumbnail = "$home_folder/_index/thumbs/$current_path/$name.jpg";
+	$thumbnail = "$home_folder/$index_folder/thumbs/$current_path/$name.jpg";
 	
 	// Check if thumb exists or is old
 	if (!is_file($thumbnail)
