@@ -84,7 +84,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 
 			<li id="signout"><a class="button" href="<?= $home_uri ?>/_index/actions/signout.php">Sign Out</a></li>
 
-		<? else: ?>
+		<? elseif (isset($visitor) or isset($admin)): ?>
 			
 			<li id="signin">
 			
