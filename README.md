@@ -2,7 +2,7 @@
 
 Junkbox is a file browser and manager written in PHP intended to share and manage files in a presentable way.
 
-**Disclaimer:** Absolutely no warranty is provided with the software. Use at your own risk.
+**Disclaimer:** Absolutely no warranty is provided with the software. Use at your own risk. Actually, don't use this at all.
 
 ## Installation
 
