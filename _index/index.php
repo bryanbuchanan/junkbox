@@ -11,8 +11,8 @@ if ($current_htaccess_content != $correct_htaccess_content):
 	fclose($htaccess_file);
 endif;
 
-if (preg_match("#/\.index/#", $_SERVER['REQUEST_URI'])):
-	$forward_to = preg_replace("#.index/index.php$#", "", $_SERVER['PHP_SELF']);
+if (preg_match("#/\_index/#", $_SERVER['REQUEST_URI'])):
+	$forward_to = preg_replace("#_index/index.php$#", "", $_SERVER['PHP_SELF']);
 	header("Location: $forward_to");
 	die();
 endif;
@@ -23,8 +23,8 @@ include "config.php";
 
 // Get environment variables
 $debug = false;
-$home_folder = preg_replace("#/\.index$#", "", dirname(__FILE__));
-$home_uri = preg_replace("#/\.index/index.php$#", "", $_SERVER['PHP_SELF']);
+$home_folder = preg_replace("#/\_index$#", "", dirname(__FILE__));
+$home_uri = preg_replace("#/\_index/index.php$#", "", $_SERVER['PHP_SELF']);
 $uri = preg_replace("#/$#", "", $_SERVER["REQUEST_URI"]);
 $private = (isset($viewer) and count($viewer) > 0 ? true : false);
 
@@ -41,8 +41,8 @@ $current_path = str_replace("%20", " ", $current_path);
 $current_folder = "$home_folder/$current_path";
 
 // Thumbnail folder
-$thumb_home_uri = "$home_uri/.index/thumbs";
-$thumb_home_folder = "$home_folder/.index/thumbs";
+$thumb_home_uri = "$home_uri/_index/thumbs";
+$thumb_home_folder = "$home_folder/_index/thumbs";
 $thumb_current_folder = "$thumb_home_folder/$current_path";
 $thumb_current_uri = "$thumb_home_uri/$current_path";
 
@@ -58,9 +58,9 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 	<? if (!$search_engine_indexing): ?><meta name="robots" content="noindex"><? endif ?>
 
 	<!-- Stylesheets -->
-	<link href="<?= $home_uri ?>/.index/styles/precedents.css" rel="stylesheet">
-	<link href="<?= $home_uri ?>/.index/styles/layout.css" rel="stylesheet">
-	<link href="<?= $home_uri ?>/.index/styles/grid.css" rel="stylesheet">
+	<link href="<?= $home_uri ?>/_index/styles/precedents.css" rel="stylesheet">
+	<link href="<?= $home_uri ?>/_index/styles/layout.css" rel="stylesheet">
+	<link href="<?= $home_uri ?>/_index/styles/grid.css" rel="stylesheet">
 
 	<!-- Internet Exploder -->
 	<!--[if lt IE 7]><script>window.location="http://usestandards.com/upgrade?url="+document.location.href;</script><![endif]-->
@@ -82,7 +82,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 		
 		<? if (isset($_COOKIE[$admin_key]) or isset($_COOKIE[$access_key])): ?>
 
-			<li id="signout"><a class="button" href="<?= $home_uri ?>/.index/actions/signout.php">Sign Out</a></li>
+			<li id="signout"><a class="button" href="<?= $home_uri ?>/_index/actions/signout.php">Sign Out</a></li>
 
 		<? else: ?>
 			
@@ -90,7 +90,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 			
 				<a class="button" href="#">Sign In</a>
 
-				<form action="<?= $home_uri ?>/.index/actions/signin.php" method="post">
+				<form action="<?= $home_uri ?>/_index/actions/signin.php" method="post">
 					<input type="text" name="name" size="15" placeholder="Name">
 					<input type="password" name="password" size="15" placeholder="Password">
 					<input type="submit" value="Go &rarr;">
@@ -118,7 +118,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				and $file != ".."
 				and $file != ".svn"
 				and $file != "/"
-				and $file != ".index"
+				and $file != "_index"
 				and $file != ".htaccess"
 				and $file != ".DS_Store"
 				and $file != ".git"
@@ -154,7 +154,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				
 					<!-- Folder -->
 					<li class="folder">
-						<a href="<?= $file ?>" rel="slide"><img src="<?= $home_uri ?>/.index/images/icons/icon-folder.png" alt="<?= $file ?>" class="icon"></a>
+						<a href="<?= $file ?>" rel="slide"><img src="<?= $home_uri ?>/_index/images/icons/icon-folder.png" alt="<?= $file ?>" class="icon"></a>
 						<strong><a href="<?= $file ?>" rel="slide"><?= $file ?></a></strong>
 						<span><?= date("M d Y", filemtime("$current_folder/$file")) ?></span>
 					</li>
@@ -174,7 +174,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 					
 					<!-- Thumbnail doesn't exist -->			
 					<li class="file">
-						<a href="<?= $file ?>" title="<?= $file ?>" target="_blank"><img src="<?= $home_uri ?>/.index/images/icons/icon-file.png" alt="<?= $file ?>" class="icon"></a>
+						<a href="<?= $file ?>" title="<?= $file ?>" target="_blank"><img src="<?= $home_uri ?>/_index/images/icons/icon-file.png" alt="<?= $file ?>" class="icon"></a>
 						<strong><a href="<?= $file ?>" title=" <?= $file ?>" target="_blank"><?= $file ?></a></strong>
 						<em><?= round((filesize("$current_folder/$file")) / 1000) ?>kb</em>
 						<span><?= date("M d Y", filemtime("$current_folder/$file")) ?></span>
@@ -212,7 +212,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 		var thumb_current_uri = "<?= $thumb_current_uri ?>";
 	</script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="<?= $home_uri ?>/.index/scripts/functions.js"></script>
+	<script src="<?= $home_uri ?>/_index/scripts/functions.js"></script>
 				s
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascripts -->
