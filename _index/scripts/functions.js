@@ -65,11 +65,10 @@
 		var $this = $(this);
 		
 		if (file.match(/(jpg|jpeg|gif|png)$/i)) {
-			$.post(home_uri + '/_index/actions/thumbnail.php', { 
+			$.post(home_uri + '/' + index_folder + '/actions/thumbnail.php', { 
 				file: file,
 				current_path: current_path
 			}, function(thumb) {
-				log(thumb);
 				$this.find('img').attr('src', thumb_current_uri + "/" + thumb).removeClass('icon');
 				$this.addClass('thumb');
 			});
