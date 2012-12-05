@@ -6,7 +6,7 @@ Junkbox is a file browser and manager written in PHP intended to share and manag
 
 ## Installation
 
-1. Put the "\_index" folder inside the folder you'd like to share, along side any existing files.  
+1. Put the "**\_index**" folder inside the folder you'd like to share.
 2. Visit **http://URL_TO_YOUR_FOLDER/_index** in your web browser and the script should finish the installation for you.
 
 ## Limiting Access
