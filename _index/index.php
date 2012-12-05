@@ -78,7 +78,6 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 
 		<? if (isset($_COOKIE[$admin_key])): ?>
 
-			<li id="file"><a class="button" href="#file"><span>Upload File</span></a></li>
 			<li id="folder"><a class="button" href="#folder"><span>New Folder</span></a></li>
 			
 		<? endif ?>	
@@ -231,6 +230,8 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 	
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascripts -->
+		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/admin.js"></script>
+
 	<? endif ?>
 	
 </body>

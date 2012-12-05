@@ -11,6 +11,6 @@ $index_folder = "_index"; // Name of the index folder
 // $viewer[] = array('name', 'password');
 
 // Admin Accounts (not yet working)
-// $admin[] = array('admin', 'admin');
+$admin[] = array('admin', 'admin');
 
 ?>
