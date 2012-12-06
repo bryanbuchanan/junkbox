@@ -1,6 +1,9 @@
 /* RESEN */
 /* Javascript
 ----------------------------------------------------------------------------- */
+	
+	
+	var admin = new Object();
 			
 
 /* FUNCTION: HOVER
@@ -103,22 +106,17 @@
 ----------------------------------------------------------------------------- */
 
 
-	function newFolder() {
+	admin.newFolder = function() {
 
-		$.post(site_host + '.index/actions/folder.php', {
-		
-			folder: 1,
-			file: directory + "new_folder_1"
-			
+		$.post(home_uri + '/' + index_folder + '/actions/folder.php', { 
+			folder: current_path + '/untitled_folder'
 		}, function(data) {
-		
 			location.reload(true);
-
 		});
 				
 		return false;
 	
-	}
+	};
 
 
 /* FUNCTION: RIGHT CLICK
@@ -147,7 +145,7 @@
 		// move();
 		$('input[type=text]').live('keyup', safeName);
 		$('input[type=text]').live('change', safeName);
-		$('#folder a').click(newFolder);
+		$('#folder a').click(admin.newFolder);
 		//rightClick();
 		//diskSpace();
 

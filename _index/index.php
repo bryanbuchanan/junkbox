@@ -226,11 +226,11 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 		var thumb_current_uri = "<?= $thumb_current_uri ?>";
 		var index_folder = "<?= $index_folder ?>";
 	</script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery.js"></script>
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/functions.js"></script>
 	
 	<? if (isset($_COOKIE[$admin_key])): ?>
-		<!-- Admin Javascripts -->
+		<!-- Admin Javascript -->
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/admin.js"></script>
 
 	<? endif ?>
