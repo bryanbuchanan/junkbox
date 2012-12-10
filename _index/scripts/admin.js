@@ -125,7 +125,13 @@
 
 	admin.rightClick = function() {
 	
+		$('body').click(function() {
+			$('.content .selected').removeClass('selected');
+			$('#menu').remove();
+		});
+	
 		$('body').bind('contextmenu', function(event) {
+			$('.content .selected').removeClass('selected');
 			$('#menu').remove();
 		});
 	
@@ -143,6 +149,7 @@
 			
 			// Menu
 			var $menu = $('<ul id="menu" data-target="' + target + '">\
+				<li><a class="rename" href="#">Change Name</a></li>\
 				<li><a class="delete" href="' + home_uri + '/' + index_folder + '/actions/delete.php">Delete</a></li>\
 				</ul>');
 						 		 
