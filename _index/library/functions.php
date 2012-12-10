@@ -16,4 +16,13 @@ function resolve_duplicate_names($location) {
 	endif;
 }
 
+// Server Response
+function respond($status, $message="") {
+	echo json_encode(array(
+		"status" => $status,
+		"message" => $message
+	));
+	die();
+}
+
 ?>

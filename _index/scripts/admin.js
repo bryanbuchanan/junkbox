@@ -119,12 +119,132 @@
 	};
 
 
-/* FUNCTION: RIGHT CLICK
+/* Right Click
 ----------------------------------------------------------------------------- */
 
 
+	admin.rightClick = function() {
 	
+		$('body').bind('contextmenu', function(event) {
+			$('#menu').remove();
+		});
+	
+		$('.content > li').bind('contextmenu', function(event) {
+
+			// Remove existing menus
+			$('#menu').remove();
+			
+			// Set classes
+			$('.content .selected').removeClass('selected');
+			$(this).addClass('selected');
+			
+			// Get target
+			var target = $(this).children('a').attr('href');
+			
+			// Menu
+			var $menu = $('<ul id="menu" data-target="' + target + '">\
+				<li><a class="delete" href="' + home_uri + '/' + index_folder + '/actions/delete.php">Delete</a></li>\
+				</ul>');
+						 		 
+		 	var offsetX = 0;
+		 	var offsetY = -8;
+		 	var windowWidth = $(window).width();
+		 	var windowHeight = $(window).height();
+
+			$menu.css({
+				top: (event.pageY + offsetY) + "px",
+				left: (event.pageX + offsetX) + "px"
+			});
+			
+			$('body').append($menu);
+			
+			// Disable menu
+			return false;
+				
+		});
+	
+	};
     
+	
+/* Delete
+----------------------------------------------------------------------------- */
+	
+	
+	admin.delete = function() {
+	
+		// Get properties
+		var target = current_path + "/" + $(this).closest('#menu').data('target');
+		var target = target.replace(/^\//, '');
+		var action = $(this).attr('href');
+		var $listItem = $('.content a[href="' + $(this).closest('#menu').data('target') + '"]').parent();
+
+		// Remove menu
+		$('#menu').remove();
+								
+		// Delete
+		if (admin.deleteConfirm(target, $listItem)) {
+			$.post(action, { target: target }, function(data) {
+				if (data == "success") $listItem.remove();
+			});	
+		}
+		
+		return false;
+		
+	};
+	
+	admin.deleteConfirm = function(target, $listItem) {
+	
+		admin.deleteConfirm.confirmed = "error";
+	
+		// Confirm
+		if (!confirm("Are you sure you want to delete this?")) {
+		
+			admin.deleteConfirm.confirmed = false;
+			
+		} else {
+		
+			// Confirm deletion of folder contents too
+			if ($listItem.hasClass('folder')) {
+			
+				$.ajax({
+					type: "post",
+					url: home_uri + '/' + index_folder + '/actions/empty.php',
+					data: { target: target },
+					async: false,
+					dataType: "json",
+					success: function(data) {
+					
+						if (data.message > 0) {
+											
+							var language = ( data.message < 2 ? "There is " + data.message + " file " : "There are " + data.message + " files ");
+				
+							if (confirm(language + "inside this folder that will also be permanently erased. Would you like to delete anyway?")) {
+								admin.deleteConfirm.confirmed = true;
+							} else {
+								admin.deleteConfirm.confirmed = false;
+							}
+
+						} else {
+
+							admin.deleteConfirm.confirmed = true;
+				
+						}
+						
+					}
+
+				});
+
+			} else {
+		
+				admin.deleteConfirm.confirmed = true;
+		
+			}
+			
+		}
+		
+		return admin.deleteConfirm.confirmed;
+				
+	};
 	
 	
 /* Timeline
@@ -143,11 +263,13 @@
 		
 		// rename();
 		// move();
-		$('input[type=text]').live('keyup', safeName);
-		$('input[type=text]').live('change', safeName);
+		// $('input[type=text]').live('keyup', safeName);
+		// $('input[type=text]').live('change', safeName);
+		
 		$('#folder a').click(admin.newFolder);
-		//rightClick();
-		//diskSpace();
+		admin.rightClick();
+		$('a.delete').live('click', admin.delete);
+
 
 	});	
 

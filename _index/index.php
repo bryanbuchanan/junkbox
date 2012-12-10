@@ -1,6 +1,7 @@
 <?
 
 include "config.php";
+include "library/functions.php";
 
 /* Initial Setup
 ------------------------------------------------------------ */
@@ -8,7 +9,7 @@ include "config.php";
 $current_htaccess_content = ( is_file("../.htaccess") ? file_get_contents("../.htaccess", true) : "" );
 $correct_htaccess_content = "Options Indexes FollowSymLinks\nDirectoryIndex " . $_SERVER['PHP_SELF'];
 
-// Create .htaccess file
+// Create .htaccess file if it doesn't exist or is incorrect
 if ($current_htaccess_content != $correct_htaccess_content):
 	$htaccess_file = fopen("../.htaccess", "w") or die("Can't create .htaccess file");
 	fwrite($htaccess_file, $correct_htaccess_content);
@@ -25,7 +26,7 @@ endif;
 /* --------------------------------------------------------- */
 
 // Get environment variables
-$debug = false;
+$debug = true;
 $home_folder = preg_replace("#/$index_folder$#", "", dirname(__FILE__));
 $home_uri = preg_replace("#/$index_folder/index.php$#", "", $_SERVER['PHP_SELF']);
 $uri = preg_replace("#/$#", "", $_SERVER["REQUEST_URI"]);
@@ -63,7 +64,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 	<!-- Stylesheets -->
 	<link href="<?= $home_uri ?>/<?= $index_folder ?>/styles/precedents.css" rel="stylesheet">
 	<link href="<?= $home_uri ?>/<?= $index_folder ?>/styles/layout.css" rel="stylesheet">
-	<link href="<?= $home_uri ?>/<?= $index_folder ?>/styles/grid.css" rel="stylesheet">
+	<link href="<?= $home_uri ?>/<?= $index_folder ?>/styles/content.css" rel="stylesheet">
 
 	<!-- Internet Exploder -->
 	<!--[if lt IE 7]><script>window.location="http://usestandards.com/upgrade?url="+document.location.href;</script><![endif]-->
@@ -108,7 +109,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 
 	<? if ($private and !isset($_COOKIE[$admin_key]) and !isset($_COOKIE[$access_key])): else: ?>
 
-		<ul class="grid">
+		<ul class="content">
 
 			<?
 								
@@ -125,8 +126,6 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				and $file != ".DS_Store"
 				and $file != ".git"
 				and $file != ".gitignore"
-				and $file != "thumbs"
-				and substr_count($file, ".thumb") == 0
 				and substr_count($file, ".pureftpd") == 0):
 					$random_key = rand(100,999);
 					$date = filemtime("$current_folder/$file");
@@ -141,6 +140,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				ksort($files);
 			endif;
 			
+			// Order
 			if ($order == "desc") $files = array_reverse($files, true);
 								
 			// Create folder for thumbnails, if it doesn't already exist
@@ -212,6 +212,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 			<br>
 			$uri = <?= $uri ?><br>
 			$current_folder = <?= $current_folder ?><br>
+			$current_path = <?= $current_path ?><br>
 			$thumb_current_folder = <?= $thumb_current_folder ?><br>
 			$thumb_current_uri = <?= $thumb_current_uri ?><br>
 		</div>
@@ -232,7 +233,6 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascript -->
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/admin.js"></script>
-
 	<? endif ?>
 	
 </body>
