@@ -127,6 +127,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				and $file != ".DS_Store"
 				and $file != ".git"
 				and $file != ".gitignore"
+				and $file != "README.md"
 				and substr_count($file, ".pureftpd") == 0):
 					$random_key = rand(100,999);
 					$date = filemtime("$current_folder/$file");
