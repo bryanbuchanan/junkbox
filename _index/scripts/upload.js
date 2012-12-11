@@ -126,6 +126,8 @@
 ----------------------------------------------------------------------------- */
 	
 	upload.progress = function(e) {
+	
+		console.log(e);
 					
 		if (e.lengthComputable) {
 	
@@ -263,7 +265,7 @@
 		if (response.status === "success") {
 		
 			// Classes
-			$('#' + response.rsnLoadingId).removeClass('active');
+			$('.active').removeClass('active');
 			
 			// Remove file from queue list after it's uploaded
 			removeItem(upload.files, 0);
