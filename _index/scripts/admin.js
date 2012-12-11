@@ -143,7 +143,6 @@
  			new_name: new_name,
  			current_path: current_path
  		}, function(data) {
- 			console.log(data);
  			var name = data.message;
  			$listItem.find('strong').text(name);
  			$listItem.find('a').attr('href', name);

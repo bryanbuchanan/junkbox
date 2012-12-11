@@ -86,7 +86,7 @@
 		icons();
 		signIn();
 		$('.inactive a').click(function() { return false; });
-		$('.grid > li.file:not(.thumb)').each(thumbnail);
+		$('.content > li.file:not(.thumb)').each(thumbnail);
 
 	});
 			
