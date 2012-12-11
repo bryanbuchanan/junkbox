@@ -149,7 +149,7 @@
 			
 			// Menu
 			var $menu = $('<ul id="menu" data-target="' + target + '">\
-				<li><a class="rename" href="#">Change Name</a></li>\
+				<li><a class="rename" href="#rename">Change Name</a></li>\
 				<li><a class="delete" href="' + home_uri + '/' + index_folder + '/actions/delete.php">Delete</a></li>\
 				</ul>');
 						 		 
@@ -172,6 +172,63 @@
 	
 	};
     
+    
+/* Websafe names
+----------------------------------------------------------------------------- */
+  
+ 	
+ 	admin.safeName = function() {
+ 	
+ 		
+ 	
+ 	};
+ 	
+ 	 
+/* Rename
+----------------------------------------------------------------------------- */
+ 
+
+	admin.rename = new Object();
+
+
+/* Show renaming fields */
+
+
+ 	admin.rename.initiate = function() {
+ 	
+		var $listItem = $('.content a[href="' + $(this).closest('#menu').data('target') + '"]').parent();
+ 		var action = home_uri + "/" + index_folder + "/actions/rename.php";
+ 		var name = $listItem.find('strong').text();
+ 		
+ 		var $form = $('<form action="' + action + '" method="post" id="rename"><input type="text" name="name" value="' + name + '"></form>');
+ 		
+ 		$listItem.append($form);
+
+ 	};
+ 	
+ 	
+ /* Submit new name */
+ 
+ 	
+ 	admin.rename.submit = function() {
+ 	
+ 		var action = $(this).attr('action');
+ 		var oldName = $(this).find('strong').text();
+ 		var newName = $(this).find('input').val();
+ 		
+ 		$.post(action, {
+ 		
+ 			
+ 		
+ 		}, function(data) {
+ 		
+ 		
+ 		});
+ 		
+ 		return false;
+ 	
+ 	};
+ 
 	
 /* Delete
 ----------------------------------------------------------------------------- */
@@ -276,6 +333,10 @@
 		$('#folder a').click(admin.newFolder);
 		admin.rightClick();
 		$('a.delete').live('click', admin.delete);
+		
+		// Rename
+		$('a[href="#rename"]').live('click', admin.rename.initiate);
+		$('#rename').live('submit', admin.rename.submit);
 
 
 	});	
