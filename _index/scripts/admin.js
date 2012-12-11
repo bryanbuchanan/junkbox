@@ -179,7 +179,12 @@
  	
  	admin.safeName = function(name) {
  	
- 		
+		var name = name.toLowerCase();
+		var name = name.replace(/\&/ig, "and");
+		var name = name.replace(/[^a-zA-Z0-9\-\s]/ig, "");
+		var name = name.replace(/(^\s+|\s+$)/g, "");
+		var name = name.replace(/\s+/ig, "-");
+		return name;
  	
  	};
  	
@@ -204,7 +209,7 @@
  		$listItem.addClass('renaming');
  		
  		// Create form
- 		var $form = $('<form action="' + action + '" method="post" id="rename"><input type="text" name="name" value="' + name + '"></form>');
+ 		var $form = $('<form action="' + action + '" method="post" id="rename"><input type="text" name="name" value="' + name + '" autocomplete="off"></form>');
  		$listItem.append($form);
  		
  		$form.find('input').focus();
