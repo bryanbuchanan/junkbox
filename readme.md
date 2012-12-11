@@ -27,6 +27,3 @@ To require a name and password to access your files:
 		$viewer[] = array('kenny', 'password123');
 		$viewer[] = array('stevie', 'anotherpassword');
 
-## Notes
-
-- File management functionality is not yet working.
