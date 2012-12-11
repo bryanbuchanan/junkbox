@@ -293,7 +293,7 @@
 	
 	upload.queueComplete = function() {
 	
-		// location.reload(true);
+		location.reload(true);
 		
 	}
 		
