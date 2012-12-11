@@ -62,7 +62,7 @@ if ($_POST):
 		
 	endif;
 	
-	echo "$name.jpg";
+	respond("success", "$name.jpg");
 			
 endif;
 

@@ -13,7 +13,7 @@ if (!empty($_POST) and $_POST['target'] != ""):
 		unlink($target);
 	endif;
 	
-	echo "success";
+	respond("success");
 	
 endif;
 

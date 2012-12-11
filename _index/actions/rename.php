@@ -10,9 +10,7 @@ if (!empty($_POST)):
 	if (is_dir($target)):
 	
 
-		shell_exec("rm -r $target");
-	elseif (is_file($target)):
-		unlink($target);
+
 	endif;
 	
 	echo "success";

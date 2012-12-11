@@ -68,10 +68,10 @@
 			$.post(home_uri + '/' + index_folder + '/actions/thumbnail.php', { 
 				file: file,
 				current_path: current_path
-			}, function(thumb) {
-				$this.find('img').attr('src', thumb_current_uri + "/" + thumb).removeClass('icon');
+			}, function(data) {
+				$this.find('img').attr('src', thumb_current_uri + "/" + data.message).removeClass('icon');
 				$this.addClass('thumb');
-			});
+			}, 'json');
 		}
 	
 	}

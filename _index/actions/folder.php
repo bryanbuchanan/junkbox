@@ -11,6 +11,8 @@ if (!empty($_POST)):
 	
 	if (!is_dir($folder)) mkdir($folder);
 	
+	respond('success');
+	
 endif;
 
 ?>

@@ -248,8 +248,9 @@
 		// Delete
 		if (admin.deleteConfirm(target, $listItem)) {
 			$.post(action, { target: target }, function(data) {
-				if (data == "success") $listItem.remove();
-			});	
+				console.log(data);
+				if (data.status == "success") $listItem.remove();
+			}, 'json');	
 		}
 		
 		return false;
