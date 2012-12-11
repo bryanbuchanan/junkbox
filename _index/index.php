@@ -26,7 +26,7 @@ endif;
 /* --------------------------------------------------------- */
 
 // Get environment variables
-$debug = true;
+$debug = false;
 $home_folder = preg_replace("#/$index_folder$#", "", dirname(__FILE__));
 $home_uri = preg_replace("#/$index_folder/index.php$#", "", $_SERVER['PHP_SELF']);
 $uri = preg_replace("#/$#", "", $_SERVER["REQUEST_URI"]);
@@ -79,6 +79,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 
 		<? if (isset($_COOKIE[$admin_key])): ?>
 
+			<li id="file"><a class="button" href="#file"><span>Add Files</span><input type="file" name="file" multiple></a></li>
 			<li id="folder"><a class="button" href="#folder"><span>New Folder</span></a></li>
 			
 		<? endif ?>	
@@ -233,9 +234,11 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 	
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascript -->
+				<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/upload.js"></script>
+
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/admin.js"></script>
 	<? endif ?>
-	
+
 </body>
 </html>
 

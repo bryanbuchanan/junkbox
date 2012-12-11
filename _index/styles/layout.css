@@ -102,6 +102,22 @@
 		cursor: default;
 	
 		}
+		
+		
+/* Upload */
+
+
+	input[type="file"] {
+	
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		opacity: 0;
+		cursor: pointer;
+	
+		}
 
 
 /* Tools
@@ -228,121 +244,7 @@
 		border-radius: 0 3px 3px 0;
 	
 		}
-		
-		
-/* Uploader */
 
-
-	.swfupload {
-	
-		position: absolute;
-		top: 0;
-		left: 0;
-		opacity: 0;
-		width: 100% !important;
-		height: 100% !important;
-	
-		}
-		
-	#progress {
-	
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 99;
-		width: 100%;
-		height: 100%;
-		background: url('../images/translucent-black.png');
-		display: none;
-	
-		}
-		
-	.progressWrapper {
-	
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 40%;
-		margin: -50px 0 0 -20%;
-		background: url('../images/bg-panel-small.png');
-		padding: 10px 10px 30px;
-		-webkit-border-radius: 15px;
-		-moz-border-radius: 15px;
-	
-		}
-		
-	.progressContainer {
-	
-		background: url('../images/bg-progress.png');
-		padding: 2px 2px 3px;
-		-webkit-border-radius: 7px;
-		-moz-border-radius: 7px;
-		
-		}
-	
-	.progressBarInProgress,
-	.progressBarComplete {
-	
-		background: url('../images/progress.png');
-		height: 24px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-	
-		}
-				
-	.progressBarStatus {
-	
-		position: absolute;
-		bottom: 10px;
-		left: 0;
-		width: 100%;
-		text-align: center;
-		font-weight: bold;
-		color: #333;
-		text-shadow: rgba(255,255,255,.3) 0 1px 1px;
-	
-		}
-		
-	.progressName {
-	
-		display: none;
-	
-		}
-	
-	
-/* Sorting */
-	
-	
-	#sort {
-	
-		display: none;
-		margin-top: 9px;
-		margin-left: 25%;
-	
-		}
-		
-	#sort em {
-	
-		font-style: normal;
-		color: #999;
-		margin-right: 5px;
-	
-		}
-		
-	#sort a {
-	
-		display: inline;
-		text-indent: 0;
-		padding: 3px 5px;
-		color: #ccc;
-	
-		}
-		
-	#sort a.selected {
-	
-		cursor: default;
-	
-		}
 
 /* Overlay
 ------------------------------------------------------------------------------- */
@@ -350,90 +252,82 @@
 		
 	#overlay {
 	
-		width: 100%;
-		height: 100%;
+		position: absolute;
+		z-index: 104;
 		top: 0;
+		right: 0;
+		bottom: 0;
 		left: 0;
-		position: fixed;
-		text-align: center;
-		background: url('../images/translucent-black.png');
+		background: rgba(0,0,0,.65);
+	
+		}
+		
+	#overlay > div {
+	
+		color: #555;
+		background: #efefef;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border-radius: 5px;
+		padding: 20px;
 	
 		}
 		
 		
-/* URL Display */
-
-
-	input.big {
-	
-		margin-top: 30%;
-		outline: none;
-		width: 75%;
-		text-align: center;
-		color: #fff;
-		border: 4px solid #333;
-		background: url('../images/translucent-black.png');
-		font-size: 24px;
-		line-height: 24px;
-		padding: 50px 0;
-		position: relative;
-		z-index: 101;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
-
-		}
-			
+/* Files */		
 		
-/* Right Click Menu */
-
-
-	#rightclick {
+		
+	#overlay > .files {
 	
-		position: fixed;
-		z-index: 101;
+		width: 450px;
+		max-height: 250px;
+		margin: -10% 0 0 -245px;
+		overflow: auto;
+	
+		}
+		
+	.files ul {
+	
+		float: left;
+		width: 100%;
+		margin-bottom: -10px;
+	
+		}
+	
+	.files li {
+	
+		float: left;
+		width: 100%;
+		background: #bbb;
+		margin-bottom: 10px;
 		border-radius: 5px;
 		overflow: hidden;
-
+		position: relative;
+	
 		}
 		
-	#rightclick a {
+	.files strong {
 	
-		display: block;
-		color: #333;
-		background: #efefef;
-		padding: 5px 20px;
-		border-bottom: 1px solid #555;
-		border-left: 2px solid #999;
-		border-right: 2px solid #999;
-
+		position: absolute;
+		top: 0;
+		left: 10px;
+		color: #fff;
+		line-height: 25px;
+	
 		}
 		
-	#rightclick li:first-child a {
-
-		border-top: 2px solid #999;
-		padding-top: 10px;
-
-
-		}
-		
-	#rightclick li:last-child a {
-
-		border-bottom: 2px solid #999;
-		padding-bottom: 10px;
+	.files var {
 	
-		}
-	
-	#rightclick a:hover {
-	
+		float: left;
 		background: #555;
-	
+		height: 25px;
+		border-radius: 5px;
+		
 		}
+		
+		
 
-	#rightclick a:active {
-	
-		background: #777;
-	
-		}
 		
 		
 /* Credit
@@ -456,25 +350,7 @@
         border-radius: 3px;
 	
 		}
-		
-		
-/* Upload
-------------------------------------------------------------------------------- */
-		
-
-	#dragging {
-
-		position: fixed;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 200;
-		outline: 10px solid #00a5e3;
-		outline-offset: -10px;
-
-		}
-		
+	
 		
 /* Debug
 ------------------------------------------------------------------------------- */

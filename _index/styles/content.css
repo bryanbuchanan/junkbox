@@ -145,7 +145,8 @@
 		left: 0;
 		right: 0;
 		color: #fff;
-		border-bottom: 1px dashed #555;
+		border: 1px dashed #555;
+		border-radius: 5px;
 		padding: 7px;
 		width: auto;
 		margin: 0;

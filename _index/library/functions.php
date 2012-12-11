@@ -3,6 +3,9 @@
 // Get home folder
 $home_folder = preg_replace("#/$index_folder.*$#", "", dirname(__FILE__));
 
+// Parse disallowed file type list
+$disallowed_file_types = "test," . $disallowed_file_types;
+
 // Resolve duplicate names
 function resolve_duplicate_names($location) {
 	if (is_dir($location) or is_file($location)):
