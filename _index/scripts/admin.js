@@ -181,9 +181,10 @@
  	
 		var name = name.toLowerCase();
 		var name = name.replace(/\&/ig, "and");
-		var name = name.replace(/[^a-zA-Z0-9\-\s]/ig, "");
+		var name = name.replace(/[^a-z0-9\-\s._]/ig, "");
 		var name = name.replace(/(^\s+|\s+$)/g, "");
 		var name = name.replace(/\s+/ig, "-");
+		
 		return name;
  	
  	};

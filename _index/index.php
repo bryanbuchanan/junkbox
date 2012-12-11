@@ -226,6 +226,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 		var current_path = "<?= $current_path ?>";
 		var thumb_current_uri = "<?= $thumb_current_uri ?>";
 		var index_folder = "<?= $index_folder ?>";
+		var disallowed_file_types = "<?= $disallowed_file_types ?>";
 	</script>
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery.js"></script>
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/functions.js"></script>
