@@ -177,7 +177,7 @@
 ----------------------------------------------------------------------------- */
   
  	
- 	admin.safeName = function() {
+ 	admin.safeName = function(name) {
  	
  		
  	
@@ -196,13 +196,20 @@
 
  	admin.rename.initiate = function() {
  	
+ 		// Get properties/elements
 		var $listItem = $('.content a[href="' + $(this).closest('#menu').data('target') + '"]').parent();
  		var action = home_uri + "/" + index_folder + "/actions/rename.php";
  		var name = $listItem.find('strong').text();
  		
- 		var $form = $('<form action="' + action + '" method="post" id="rename"><input type="text" name="name" value="' + name + '"></form>');
+ 		$listItem.addClass('renaming');
  		
+ 		// Create form
+ 		var $form = $('<form action="' + action + '" method="post" id="rename"><input type="text" name="name" value="' + name + '"></form>');
  		$listItem.append($form);
+ 		
+ 		$form.find('input').focus();
+ 		
+ 		return false;
 
  	};
  	
@@ -212,18 +219,25 @@
  	
  	admin.rename.submit = function() {
  	
+ 		var $listItem = $(this).closest('li');
  		var action = $(this).attr('action');
- 		var oldName = $(this).find('strong').text();
- 		var newName = $(this).find('input').val();
+ 		var old_name = $listItem.find('strong').text();
+ 		var new_name = $(this).find('input').val();
+ 		
+ 		// Make sure new name is web safe
+ 		var new_name = admin.safeName(new_name);
  		
  		$.post(action, {
- 		
- 			
- 		
+ 			old_name: old_name,
+ 			new_name: new_name,
+ 			current_path: current_path
  		}, function(data) {
- 		
- 		
- 		});
+ 			var name = data.message;
+ 			$listItem.find('strong').text(name);
+ 			$listItem.find('a').attr('href', name);
+ 			$listItem.find('form').remove();
+ 			$listItem.removeClass('renaming');
+ 		}, 'json');
  		
  		return false;
  	
