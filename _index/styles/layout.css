@@ -444,14 +444,16 @@
         
 		position: fixed;
 		z-index: 103;
-		top: 4px;
+		top: 6px;
 		right: 5%;
 		display: block;
 		text-indent: -5000px;
 		overflow: hidden;
-        width: 31px;
-        height: 27px;
-        background: url('../images/resen.png');
+        width: 28px;
+        height: 28px;
+        background: #000 url('../images/resen.png') center center no-repeat;
+        opacity: .25;
+        border-radius: 3px;
 	
 		}
 		
