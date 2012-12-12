@@ -127,7 +127,7 @@
 	
 	upload.progress = function(e) {
 	
-		console.log(e);
+		log(e);
 					
 		if (e.lengthComputable) {
 	

@@ -173,7 +173,7 @@
 		// Delete
 		if (admin.deleteConfirm(target, $listItem)) {
 			$.post(action, { target: target }, function(data) {
-				console.log(data);
+				log(data);
 				if (data.status == "success") $listItem.remove();
 			}, 'json');	
 		}
