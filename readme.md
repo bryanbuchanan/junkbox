@@ -9,6 +9,19 @@ Junkbox is a file browser and manager written in PHP intended to share and manag
 1. Put the "\_index" folder inside the folder you'd like to share.
 2. Visit **http://URL_TO_YOUR_FOLDER/_index** in your web browser.
 
+## Setting Up Admin Accounts
+
+Uploading, renaming, deleting, and folder creation are available for admin accounts. You can setup admin accounts by:
+
+1.  Open the "_index/config.php" file, and change the value of this line to reflect the admin name and password you'd like to use:
+		
+		$admin[] = array('admin', 'password');
+
+2. You can setup multiple admin accounts by making duplicates of this line with different names/passwords:
+
+		$admin[] = array('steviej', 'password321');
+		$admin[] = array('ashleys', 'password123');
+
 ## Limiting Access
 
 To require a name and password to access your files:
@@ -24,6 +37,6 @@ To require a name and password to access your files:
 2.  Replace "name" and "password" with the name/password you'd like to use (be sure to keep the quotes though).
 3. You can setup multiple accounts by making duplicates of this line with different names/passwords:
 
-		$viewer[] = array('kenny', 'password123');
-		$viewer[] = array('stevie', 'anotherpassword');
+		$viewer[] = array('kennyp', 'password123');
+		$viewer[] = array('aprilb', 'anotherpassword');
 
