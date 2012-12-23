@@ -40,3 +40,16 @@ To require a name and password to access your files:
 		$viewer[] = array('kennyp', 'password123');
 		$viewer[] = array('aprilb', 'anotherpassword');
 
+## Limiting Access to Specific Folders
+
+You can also create a name/password to protect individual folders, separately from the global "viewer" accounts already mentioned.
+
+1. Create a text file on your computer named **_password.txt**.
+2. Inside that txt file, put this:
+
+		name: joe
+		password: pdub
+		
+	And change "joe" and "pdub" to whatever name/password you'd like to require.
+3. Upload the **_password.txt** file to the folder you'd like it to protect.
+

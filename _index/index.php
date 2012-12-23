@@ -6,7 +6,7 @@ include "library/functions.php";
 /* Initial Setup
 ------------------------------------------------------------ */
 
-$current_htaccess_content = ( is_file("../.htaccess") ? file_get_contents("../.htaccess", true) : "" );
+$current_htaccess_content = is_file("../.htaccess") ? file_get_contents("../.htaccess", true) : "";
 $correct_htaccess_content = "Options Indexes FollowSymLinks\nDirectoryIndex " . $_SERVER['PHP_SELF'];
 
 // Create .htaccess file if it doesn't exist or is incorrect
@@ -49,6 +49,17 @@ $thumb_home_uri = "$home_uri/$index_folder/thumbs";
 $thumb_home_folder = "$home_folder/$index_folder/thumbs";
 $thumb_current_folder = "$thumb_home_folder/$current_path";
 $thumb_current_uri = "$thumb_home_uri/$current_path";
+
+// Local passwords
+if (is_file("$current_folder/_password.txt")):
+	$local_account_data = file_get_contents("$current_folder/_password.txt", true);
+	preg_match("#^name:\s*(.+?)$#im", $local_account_data, $local_name);
+	preg_match("#^password:\s*(.+?)$#im", $local_account_data, $local_password);
+	$local_name = $local_name[1];
+	$local_password = $local_password[1];
+	$local_account = true;
+	$private = true;
+endif;
 
 ?>
 <!doctype html>
@@ -123,6 +134,7 @@ $thumb_current_uri = "$thumb_home_uri/$current_path";
 				and $file != ".svn"
 				and $file != "/"
 				and $file != $index_folder
+				and $file != "_password.txt"
 				and $file != ".htaccess"
 				and $file != ".DS_Store"
 				and $file != ".git"
