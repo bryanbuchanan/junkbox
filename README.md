@@ -22,32 +22,12 @@ Uploading, renaming, deleting, and folder creation are available for admin accou
 		$admin[] = array('steviej', 'password321');
 		$admin[] = array('ashleys', 'password123');
 
-## Limiting Access to Everything
-
-To require a name and password to access *all* your files:
-
-1. Open the "_index/config.php" file, and uncomment this line:
-
-		// $viewer[] = array('name', 'password');
-
-	So it should look like this:
-
-		$viewer[] = array('name', 'password');
-
-2.  Replace "name" and "password" with the name/password you'd like to use (be sure to keep the quotes though).
-3. You can setup multiple accounts by making duplicates of this line with different names/passwords:
-
-		$viewer[] = array('kennyp', 'password123');
-		$viewer[] = array('aprilb', 'anotherpassword');
-
-## Limiting Access to Specific Folders
-
-You can also create a name/password to protect individual folders, separately from the global "viewer" accounts already mentioned.
+## Limiting Access
 
 1. Create a text file named **_password.txt** with the contents:
 
 		name: joe
-		password: pdub
+		password: password1
 		
 2. Change "joe" and "pdub" to whatever name/password you'd like to require for this folder.
-3. Upload the **_password.txt** file to the folder you'd like it to protect. It'll also protect all folders within that folder.
+3. Upload the **_password.txt** file to the folder you'd like it to protect.
