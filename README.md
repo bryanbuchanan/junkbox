@@ -11,16 +11,18 @@ Junkbox is a file browser and manager written in PHP intended to share and manag
 
 Uploading, renaming, deleting, and folder creation are available for admin accounts. To setup admin accounts:
 
-1.  Open the `_index/config.php` file, and change the value of this line to reflect the admin name and password you'd like to use:
+Open the `_index/config.php` file, and change the value of this line to reflect the admin name and password you'd like to use:
 		
-		php
-		$admin[] = array('admin', 'password');
+```php
+$admin[] = array('admin', 'password');
+```
 
-2. You can setup multiple admin accounts by making duplicates of this line with different names/passwords:
+You can setup multiple admin accounts by making duplicates of this line with different names/passwords:
 
-		php
-		$admin[] = array('steviej', 'password321');
-		$admin[] = array('ashleys', 'password123');
+```php
+$admin[] = array('steviej', 'password321');
+$admin[] = array('ashleys', 'password123');
+```
 
 ## Limiting Access
 
