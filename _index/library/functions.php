@@ -3,6 +3,9 @@
 // Get home folder
 $home_folder = preg_replace("#/$index_folder.*$#", "", dirname(__FILE__));
 
+// Create admin key out of first admin account's password
+$admin_key = "junkbox-" . md5($admin[0][1]);
+
 // Parse disallowed file type list
 $disallowed_file_types = "test," . $disallowed_file_types;
 

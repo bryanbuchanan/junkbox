@@ -25,7 +25,7 @@ if (!empty($_POST)):
 		// Compare credentials
 		if ($_POST['name'] == $local_restriction['name']
 		and $_POST['password'] == $local_restriction['password']):
-			setcookie($local_restriction['key'], true, time() + 7200, '/');
+			setcookie("junkbox-" . $local_restriction['key'], true, time() + 7200, '/');
 			header('Location: ' . $_SERVER['REQUEST_URI']);
 			die();
 		endif;

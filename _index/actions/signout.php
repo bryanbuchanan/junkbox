@@ -3,6 +3,7 @@
 if (isset($_POST)):
 
 	include "../config.php";
+	include "../library/functions.php";
 	
 	// Admin
 	if (isset($_COOKIE[$admin_key])):

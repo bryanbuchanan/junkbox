@@ -1,6 +1,5 @@
 <?
 
-$admin_key = "jlf83784";
 $search_engine_indexing = false; // allow search engines to index your folders/files
 $sort = "name"; // name or date
 $order = "asc"; // asc or desc

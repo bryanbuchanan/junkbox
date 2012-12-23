@@ -57,7 +57,7 @@ $nest_depth = substr_count(preg_replace("#^$home_uri/#", "", $_SERVER["REQUEST_U
 $local_key = false;
 $local_restriction = find_password($current_folder, $nest_depth);
 if (isset($local_restriction["key"])):
-	$local_key = $local_restriction["key"];
+	$local_key = "junkbox-" . $local_restriction["key"];
 	$private = true;
 endif;
 
@@ -95,7 +95,7 @@ endif;
 			
 		<? endif ?>	
 		
-		<? if (isset($_COOKIE[$admin_key]) or isset($_COOKIE[$access_key]) or isset($_COOKIE[$local_key])): ?>
+		<? if (isset($_COOKIE[$admin_key]) or isset($_COOKIE[$local_key])): ?>
 
 			<li id="signout"><a class="button" href="<?= $home_uri ?>/<?= $index_folder ?>/actions/signout.php?key=<?= $local_key ?>">Sign Out</a></li>
 
