@@ -26,7 +26,7 @@ endif;
 /* --------------------------------------------------------- */
 
 // Get environment variables
-$debug = false;
+$debug = true;
 $home_folder = preg_replace("#/$index_folder$#", "", dirname(__FILE__));
 $home_uri = preg_replace("#/$index_folder/index.php$#", "", $_SERVER['PHP_SELF']);
 $uri = preg_replace("#/$#", "", $_SERVER["REQUEST_URI"]);
@@ -50,13 +50,14 @@ $thumb_home_folder = "$home_folder/$index_folder/thumbs";
 $thumb_current_folder = "$thumb_home_folder/$current_path";
 $thumb_current_uri = "$thumb_home_uri/$current_path";
 
+// Nested folder depth
+$nest_depth = substr_count(preg_replace("#^$home_uri/#", "", $_SERVER["REQUEST_URI"]), "/");
+
 // Local passwords
 $local_key = false;
-if (is_file("$current_folder/_password.txt")):
-	// $local_account_data = file_get_contents("$current_folder/_password.txt", true);
-	$local_key = md5($current_folder);
-	// $local_name = $local_name[1];
-	// $local_password = $local_password[1];
+$local_restriction = find_password($current_folder, $nest_depth);
+if (isset($local_restriction["key"])):
+	$local_key = $local_restriction["key"];
 	$private = true;
 endif;
 
@@ -105,7 +106,10 @@ endif;
 				<a class="button" href="#">Sign In</a>
 
 				<form action="<?= $home_uri ?>/<?= $index_folder ?>/actions/signin.php" method="post">
-					<? if (isset($local_key)): ?><input type="hidden" name="local_password" value="<?= $current_path ?>"><? endif ?>
+					<? if (isset($local_key)): ?>
+						<input type="hidden" name="local_password" value="<?= $current_path ?>">
+						<input type="hidden" name="nest_depth" value="<?= $nest_depth ?>">
+					<? endif ?>
 					<input type="text" name="name" size="15" placeholder="Name">
 					<input type="password" name="password" size="15" placeholder="Password">
 					<input type="submit" value="Go &rarr;">
@@ -143,7 +147,7 @@ endif;
 				and $file != ".svn"
 				and $file != "/"
 				and $file != $index_folder
-				and $file != "_password.txt"
+				and ($file != $local_password_file or isset($_COOKIE[$admin_key]))
 				and $file != ".htaccess"
 				and $file != ".DS_Store"
 				and $file != ".git"
@@ -236,6 +240,7 @@ endif;
 			$uri = <?= $uri ?><br>
 			$current_folder = <?= $current_folder ?><br>
 			$current_path = <?= $current_path ?><br>
+			$nest_depth = <?= $nest_depth ?><br>
 			$thumb_current_folder = <?= $thumb_current_folder ?><br>
 			$thumb_current_uri = <?= $thumb_current_uri ?><br>
 		</div>
@@ -256,8 +261,7 @@ endif;
 	
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascript -->
-				<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/upload.js"></script>
-
+		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/upload.js"></script>
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/admin.js"></script>
 	<? endif ?>
 

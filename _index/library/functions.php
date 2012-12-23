@@ -28,4 +28,32 @@ function respond($status, $message="") {
 	die();
 }
 
+// Find local passwords
+function find_password($current_folder, $nest_depth) {
+	// Get password file name
+	global $local_password_file;
+	// Loop through each parent directory, up until application home dir
+	for ($i=0; $i<=$nest_depth; $i++):
+		// Get path to look in
+		$look_backwards = str_repeat("../", $i);
+		$look_for = realpath("$current_folder/$look_backwards$local_password_file");
+		// If found
+		if (is_file($look_for)):
+			// Get password info
+			$local_account_data = file_get_contents($look_for, true);
+			preg_match("#^name:\s*(.+?)$#im", $local_account_data, $local_name);
+			preg_match("#^password:\s*(.+?)$#im", $local_account_data, $local_password);
+			// Return
+			return array(
+				"key" => md5($look_for),
+				"name" => $local_name[1],
+				"password" => $local_password[1]
+				);
+			// Stop loop
+			break;
+		endif;
+	endfor;
+	return false;
+}
+
 ?>

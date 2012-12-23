@@ -19,35 +19,15 @@ if (!empty($_POST)):
 	
 	// Local folder login
 	if (isset($_POST['local_password'])):
-	
-		// echo "local password found \n";
-	
-		// Get local password info
-		$current_folder = "$home_folder/" . $_POST['local_password'];
-		
-		// echo "$home_folder/" . $_POST['local_password'] . " \n";
-		
-		
-		
-		$local_account_data = file_get_contents("$current_folder/_password.txt", true);
-		
-		// echo "$local_account_data \n";
-		
-		preg_match("#^name:\s*(.+?)$#im", $local_account_data, $local_name);
-		preg_match("#^password:\s*(.+?)$#im", $local_account_data, $local_password);
-		$local_key = md5($current_folder);
-		$local_name = $local_name[1];
-		$local_password = $local_password[1];
-		
-		// echo "$local_key \n";
-		// echo "$local_name \n";
-		// echo "$local_password \n";
-		
+		// Get password values
+		$current_folder = "$home_folder/" . $_POST['local_password'];		
+		$local_restriction = find_password($current_folder, $_POST['nest_depth']);
 		// Compare credentials
-		if ($_POST['name'] == $local_name and $_POST['password'] == $local_password):
-			setcookie($local_key, true, time() + 7200, '/');
+		if ($_POST['name'] == $local_restriction['name']
+		and $_POST['password'] == $local_restriction['password']):
+			setcookie($local_restriction['key'], true, time() + 7200, '/');
 			header('Location: ' . $_SERVER['REQUEST_URI']);
-			die();	
+			die();
 		endif;
 	endif;
 	
