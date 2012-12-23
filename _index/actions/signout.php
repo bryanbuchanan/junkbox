@@ -13,11 +13,6 @@ if (isset($_POST)):
 	if (isset($_GET['key'])):
 		setcookie($_GET['key'], true, time() - 3600, '/');
 	endif; 
-	
-	// Access
-	if (isset($_COOKIE[$access_key])):
-		setcookie($access_key, true, time() - 3600, '/');
-	endif;
 
 endif;
 

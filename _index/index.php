@@ -99,7 +99,7 @@ endif;
 
 			<li id="signout"><a class="button" href="<?= $home_uri ?>/<?= $index_folder ?>/actions/signout.php?key=<?= $local_key ?>">Sign Out</a></li>
 
-		<? elseif (isset($viewer) or isset($admin)): ?>
+		<? elseif (isset($admin)): ?>
 			
 			<li id="signin">
 			
@@ -131,7 +131,6 @@ endif;
 	
 	<? if (!$private
 	or $private and isset($_COOKIE[$admin_key])
-	or $private and isset($_COOKIE[$access_key])
 	or $private and $local_key and isset($_COOKIE[$local_key])): ?>
 
 		<ul class="content">

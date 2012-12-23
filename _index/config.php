@@ -12,7 +12,4 @@ $local_password_file = "_password.txt";
 // Admin Accounts
 $admin[] = array('admin', 'password');
 
-// Viewer Accounts
-// $viewer[] = array('name', 'password');
-
 ?>
