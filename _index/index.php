@@ -26,7 +26,7 @@ endif;
 /* --------------------------------------------------------- */
 
 // Get environment variables
-$debug = true;
+$debug = false;
 $home_folder = preg_replace("#/$index_folder$#", "", dirname(__FILE__));
 $home_uri = preg_replace("#/$index_folder/index.php$#", "", $_SERVER['PHP_SELF']);
 $uri = preg_replace("#/$#", "", $_SERVER["REQUEST_URI"]);
