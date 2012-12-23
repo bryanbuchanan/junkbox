@@ -2,6 +2,8 @@
 
 Junkbox is a file browser and manager written in PHP intended to share and manage files in a presentable way.
 
+![Junkbox](screenshot.png)
+
 ## Installation
 
 1. Put the `_index` folder inside the folder you'd like to share.
