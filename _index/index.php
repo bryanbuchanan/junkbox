@@ -51,13 +51,12 @@ $thumb_current_folder = "$thumb_home_folder/$current_path";
 $thumb_current_uri = "$thumb_home_uri/$current_path";
 
 // Local passwords
+$local_key = false;
 if (is_file("$current_folder/_password.txt")):
-	$local_account_data = file_get_contents("$current_folder/_password.txt", true);
-	preg_match("#^name:\s*(.+?)$#im", $local_account_data, $local_name);
-	preg_match("#^password:\s*(.+?)$#im", $local_account_data, $local_password);
-	$local_name = $local_name[1];
-	$local_password = $local_password[1];
-	$local_account = true;
+	// $local_account_data = file_get_contents("$current_folder/_password.txt", true);
+	$local_key = md5($current_folder);
+	// $local_name = $local_name[1];
+	// $local_password = $local_password[1];
 	$private = true;
 endif;
 
@@ -95,9 +94,9 @@ endif;
 			
 		<? endif ?>	
 		
-		<? if (isset($_COOKIE[$admin_key]) or isset($_COOKIE[$access_key])): ?>
+		<? if (isset($_COOKIE[$admin_key]) or isset($_COOKIE[$access_key]) or isset($_COOKIE[$local_key])): ?>
 
-			<li id="signout"><a class="button" href="<?= $home_uri ?>/<?= $index_folder ?>/actions/signout.php">Sign Out</a></li>
+			<li id="signout"><a class="button" href="<?= $home_uri ?>/<?= $index_folder ?>/actions/signout.php?key=<?= $local_key ?>">Sign Out</a></li>
 
 		<? elseif (isset($viewer) or isset($admin)): ?>
 			
@@ -106,6 +105,7 @@ endif;
 				<a class="button" href="#">Sign In</a>
 
 				<form action="<?= $home_uri ?>/<?= $index_folder ?>/actions/signin.php" method="post">
+					<? if (isset($local_key)): ?><input type="hidden" name="local_password" value="<?= $current_path ?>"><? endif ?>
 					<input type="text" name="name" size="15" placeholder="Name">
 					<input type="password" name="password" size="15" placeholder="Password">
 					<input type="submit" value="Go &rarr;">
@@ -119,7 +119,16 @@ endif;
 	
 	<a id="credit" href="http://resen.co/" target="_blank" rel="external">Resen</a>
 
-	<? if ($private and !isset($_COOKIE[$admin_key]) and !isset($_COOKIE[$access_key])): else: ?>
+	<? 
+	/* if (($private and !isset($_COOKIE[$admin_key]) and !isset($_COOKIE[$access_key]))
+	or ($local_key and !isset($_COOKIE[$local_key]) and !isset($_COOKIE[$admin_key]))):
+	else:
+	*/?>
+	
+	<? if (!$private
+	or $private and isset($_COOKIE[$admin_key])
+	or $private and isset($_COOKIE[$access_key])
+	or $private and $local_key and isset($_COOKIE[$local_key])): ?>
 
 		<ul class="content">
 
