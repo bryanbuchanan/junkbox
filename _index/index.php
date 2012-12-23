@@ -225,6 +225,14 @@ endif;
 
 		</ul>
 		
+	<? else: ?>
+	
+		<!-- Private Content -->
+		<div class="message">
+			<h3>Please sign in</h3>
+			<p>This content is private, please sign in to continue.</p>
+		</div>	
+		
 	<? endif ?>	
 
 	<? if ($debug): ?>
