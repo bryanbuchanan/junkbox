@@ -9,6 +9,6 @@ $disallowed_file_types = "php,sh,pl,rb";
 $local_password_file = "_password.txt";
 
 // Admin Accounts
-$admin[] = array('admin', 'password');
+$admin[] = array('name', 'password');
 
 ?>
