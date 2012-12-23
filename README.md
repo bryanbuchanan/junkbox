@@ -24,10 +24,7 @@ Uploading, renaming, deleting, and folder creation are available for admin accou
 
 ## Limiting Access
 
-1. Create a text file named **_password.txt** with the contents:
+Limiting access to individual folders is possible by adding a **_password.txt** file to the folder you'd like to protect. In the text file, you should define the name and password required to view the folder's contents:
 
 		name: joe
 		password: password1
-		
-2. Change "joe" and "pdub" to whatever name/password you'd like to require for this folder.
-3. Upload the **_password.txt** file to the folder you'd like it to protect.
