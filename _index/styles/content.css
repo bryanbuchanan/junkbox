@@ -117,14 +117,21 @@
 		display: block;
 	
 		}
+			
+
+/* Drag/Drop */		
 		
-	
-/* Selected */
 
-
-	.content .selected a {
+	.content .over a {
 	
 		border-color: #555;
+	
+		}
+		
+	.ui-draggable-dragging {
+	
+		z-index: 99;
+		opacity: .8;
 	
 		}
 		

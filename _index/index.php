@@ -85,7 +85,7 @@ endif;
 
 	<ul id="tools">
 				
-		<? if ("$home_uri/" == $_SERVER['REQUEST_URI']) $class = "inactive" ?>
+		<? $class = "$home_uri/" == $_SERVER['REQUEST_URI'] ? "inactive" : "" ?>
 		<li id="back" class="<?= $class ?>"><a class="button" href="../"><span>Back</span></a></li>
 
 		<? if (isset($_COOKIE[$admin_key])): ?>
@@ -268,6 +268,7 @@ endif;
 	
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascript -->
+		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery-ui-drag-drop.js"></script>
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/upload.js"></script>
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/admin.js"></script>
 	<? endif ?>

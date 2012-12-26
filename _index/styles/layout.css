@@ -80,7 +80,8 @@
 		}
 		
 	.button:active,
-	input[type="submit"]:active {
+	input[type="submit"]:active,
+	.over .button {
 	
 		color: #ccc;
 		text-shadow: rgba(0, 0, 0, .9) 0px 1px 1px;
@@ -157,9 +158,8 @@
 	
 		}
 		
-	#back .droppable {
+	#back.over a {
 		
-		background: #888;
 
 		}
 		

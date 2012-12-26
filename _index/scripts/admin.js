@@ -237,27 +237,62 @@
 	};
 	
 	
+/* Move
+----------------------------------------------------------------------------- */
+	
+	
+	admin.move = function() {
+
+		// Draggable
+		$('.content > li').draggable({
+			revert: true,
+			revertDuration: 100
+		});
+		
+		// Droppable
+		$('.content > li.folder, #back:not(.inactive)').droppable({
+			tolerance: 'touch',
+			hoverClass: 'over',
+			drop: function(event, ui) {
+				
+				// Get file locations
+				var file = $(event.srcElement).closest('li').find('a').attr('href');
+				var old_location = current_path + "/" + file;
+				var new_location = current_path + "/" + $(event.target).find('a').attr('href') + "/" + file;
+								
+				// Remove moved item
+				$(event.srcElement).closest('li').remove();
+				
+				// Move item
+				$.post(home_uri + '/' + index_folder + '/actions/move.php', {
+					old_location: old_location,
+					new_location: new_location
+				}, function(data) {
+				
+					log(data);
+				
+				});
+				
+			}
+			
+		});
+	
+	};
+	
+		
 /* Timeline
 ----------------------------------------------------------------------------- */
 	
 
 	$(document).ready(function() {
 		
-		// DnD
-		/*
-		$(window).bind('dragenter', upload.dragenter);
-		$(window).bind('dragover', upload.cancelAction);			
-		$('#dragging').live('dragleave', upload.dragleave);
-		$(window).bind('drop', upload.drop);
-		*/
-		
-		// rename();
-		// move();
-		// $('input[type=text]').live('keyup', safeName);
-		// $('input[type=text]').live('change', safeName);
-		
+		// New folder
 		$('#folder a').click(admin.newFolder);
+		
+		// Right click
 		admin.rightClick();
+		
+		// Delete
 		$('a.delete').live('click', admin.delete);
 		
 		// Rename
@@ -266,14 +301,15 @@
 		
 		// Upload
 		$('input[type="file"]').change(upload.selectFile);
-		//$('a[href="#file"]').click(function() { return false; });
-		
-		/*
+		/* DnD
 		$(window).bind('dragenter', upload.dragenter);
 		$(window).bind('dragover', upload.cancelAction);			
 		$('#dragging').live('dragleave', upload.dragleave);
 		$(window).bind('drop', upload.drop);
 		*/
+		
+		// Move
+		admin.move();
 
 	});	
 
