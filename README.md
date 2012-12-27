@@ -30,5 +30,7 @@ $admin[] = array('ashleys', 'password123');
 
 Limiting access to individual folders is possible by adding a `_password.txt` file to the folder you'd like to protect. In the text file, define the name and password required to view the folder's contents:
 
-	name: joe
-	password: password1
+```
+name: joe
+password: password1
+```
