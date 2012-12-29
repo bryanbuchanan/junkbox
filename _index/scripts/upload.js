@@ -46,51 +46,47 @@
 ----------------------------------------------------------------------------- */
 
 	upload.selectFile = function() {
-
-		// Make sure upload isn't already in progress
-		if (!upload.uploading) {
-				
-			// Freeze new uploads while current batch is processed
-			upload.uploading = true;
-			
-			// Create list of files to be updated
-			upload.files = [];
-								
-			$($('input[type="file"]')[0].files).each(function() {
 		
-				// Assign unique ID
-				this.rsnLoadingId = uniqueId();
-							
-				// Add file to list
-				upload.files.push(this);
-												
-			});
-			
-			// Check file limit
-			if (upload.underLimit() && upload.files.length > 0) {
-
-				// Create upload queue
-				$('body').append('<div id="overlay"><div class="files"><ul></ul></div></div>');
-			
-				// Create placeholder elements
-				$(upload.files).each(function() {
-								
-					$('#overlay .files ul').append('<li id="' + this.rsnLoadingId + '"><strong>' + this.name + '</strong><var></var></li>');
-									
-				});
-
-				// Upload first file
-				upload.uploadFile(upload.files[0]);
+		// Get selected files
+		var selectedFiles = $('input[type="file"]')[0].files;
+	
+		// Make sure upload isn't already in progress
+		if (upload.uploading) {
+			alert('Please wait for the current group of files to finish before adding more.');
+			return false;
+		}
 				
-			} else {
-			
-				resen.done();
-			
-			}
+		// Freeze new uploads while current batch is processed
+		upload.uploading = true;
+		
+		// Create list of files to be uploaded
+		upload.files = [];	
+		$(selectedFiles).each(function() {
+			// Assign unique ID
+			this.rsnLoadingId = uniqueId();		
+			// Add file to list
+			upload.files.push(this);							
+		});
+		
+		// Check file limit
+		if (upload.underLimit() && upload.files.length > 0) {
+
+			// Create upload queue
+			$('body').append('<div id="overlay"><div class="files"><ul></ul></div></div>');
+		
+			// Create placeholder elements
+			$(upload.files).each(function() {
+							
+				$('#overlay .files ul').append('<li id="' + this.rsnLoadingId + '"><strong>' + this.name + '</strong><var></var></li>');
+								
+			});
+
+			// Upload first file
+			upload.uploadFile(upload.files[0]);
 			
 		} else {
 		
-			alert('Please wait for the current group of files to finish before adding more.');
+			resen.done();
 		
 		}
 

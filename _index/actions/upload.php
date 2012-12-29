@@ -13,13 +13,20 @@ if ($_POST):
 	// File details
 	$path_info = pathinfo($_FILES['file']['name']);
 
+
+
 	// Allowable file types
-	$type = strtolower($path_info['extension']);
+	$type = isset($path_info['extension']) ? strtolower($path_info['extension']) : "";
 	if ($type == "jpeg") $type = "jpg";
 	if (stripos($disallowed_file_types, $type)) $name .= ".txt";
 	
 	// New file location
 	$file = "$home_folder/$current_path/$name";
+	
+	// Check if file is actually a directory
+	if (is_dir($_FILES['file']['tmp_name'])):
+		respond('error', 'Folders may not be uploaded. Please instead upload the files within this folder.');
+	endif;
 	
 	// Copy File
 	if (!isset($_FILES['file'])
