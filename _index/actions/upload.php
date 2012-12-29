@@ -13,8 +13,6 @@ if ($_POST):
 	// File details
 	$path_info = pathinfo($_FILES['file']['name']);
 
-
-
 	// Allowable file types
 	$type = isset($path_info['extension']) ? strtolower($path_info['extension']) : "";
 	if ($type == "jpeg") $type = "jpg";
