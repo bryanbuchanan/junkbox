@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------------- */
 
 	var upload = new Object();
-	upload.limit = 50;
+	upload.limit = 100;
 	upload.uploading = false;
 
 /* Remove Item from Object
@@ -134,11 +134,7 @@
 			var percentage = Math.round(e.loaded * 100 / e.total);
 			$('.files .active var').css('width', percentage + '%');
 		
-			if (percentage == 100) {
-			
-				
-				
-			}
+			if (percentage == 100) { }
 	
 		}  
 	
