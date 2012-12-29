@@ -122,12 +122,6 @@ endif;
 	</ul>
 	
 	<a id="credit" href="http://resen.co/" target="_blank" rel="external">Resen</a>
-
-	<? 
-	/* if (($private and !isset($_COOKIE[$admin_key]) and !isset($_COOKIE[$access_key]))
-	or ($local_key and !isset($_COOKIE[$local_key]) and !isset($_COOKIE[$admin_key]))):
-	else:
-	*/?>
 	
 	<? if (!$private
 	or $private and isset($_COOKIE[$admin_key])
@@ -160,7 +154,7 @@ endif;
 			
 			// Sort
 			if ($sort == "name"):
-				sort($files);
+				sort($files, SORT_NATURAL | SORT_FLAG_CASE);
 			else:
 				ksort($files);
 			endif;
