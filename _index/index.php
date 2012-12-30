@@ -33,10 +33,8 @@ $thumbnail_max_size = 300;
 $thumbnail_formatting_threshold = 120;
 
 // Error Reporting
-if ($debug):
-	error_reporting(E_ALL);
-else:
-	error_reporting(0);
+if ($debug): error_reporting(E_ALL);
+else: error_reporting(0);
 endif;
 
 // Get environment variables
