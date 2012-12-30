@@ -32,6 +32,13 @@ $thumbnail_min_size = 60;
 $thumbnail_max_size = 300;
 $thumbnail_formatting_threshold = 120;
 
+// Error Reporting
+if ($debug):
+	error_reporting(E_ALL);
+else:
+	error_reporting(0);
+endif;
+
 // Get environment variables
 $home_folder = preg_replace("#/$index_folder$#", "", dirname(__FILE__));
 $home_uri = preg_replace("#/$index_folder/index.php$#", "", $_SERVER['PHP_SELF']);
