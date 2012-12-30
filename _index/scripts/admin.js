@@ -251,7 +251,7 @@
 		
 		// Droppable
 		$('.content > li.folder, #back:not(.inactive)').droppable({
-			tolerance: 'touch',
+			tolerance: 'intersect',
 			hoverClass: 'over',
 			drop: function(event, ui) {
 				
