@@ -169,7 +169,7 @@ endif;
 			
 			// Sort
 			if ($sort == "name"):
-				sort($files, SORT_NATURAL | SORT_FLAG_CASE);
+				natcasesort($files);
 			else:
 				ksort($files);
 			endif;
