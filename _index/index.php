@@ -25,8 +25,14 @@ endif;
 
 /* --------------------------------------------------------- */
 
-// Get environment variables
+// Settings
 $debug = false;
+$thumbnail_cookie_name = "junkbox-thumb";
+$thumbnail_min_size = 60;
+$thumbnail_max_size = 300;
+$thumbnail_formatting_threshold = 120;
+
+// Get environment variables
 $home_folder = preg_replace("#/$index_folder$#", "", dirname(__FILE__));
 $home_uri = preg_replace("#/$index_folder/index.php$#", "", $_SERVER['PHP_SELF']);
 $uri = preg_replace("#/$#", "", $_SERVER["REQUEST_URI"]);
@@ -89,10 +95,8 @@ endif;
 		<li id="back" class="<?= $class ?>"><a class="button" href="../"><span>Back</span></a></li>
 
 		<? if (isset($_COOKIE[$admin_key])): ?>
-
 			<li id="file"><a class="button" href="#file"><span>Add Files</span><input type="file" name="file" multiple></a></li>
 			<li id="folder"><a class="button" href="#folder"><span>New Folder</span></a></li>
-			
 		<? endif ?>	
 		
 		<? if (isset($_COOKIE[$admin_key]) or isset($_COOKIE[$local_key])): ?>
@@ -118,6 +122,10 @@ endif;
 			</li>
 		
 		<? endif ?>
+		
+		<li id="size">
+			<div class="slider"></div>
+		</li>
 						
 	</ul>
 	
@@ -127,7 +135,7 @@ endif;
 	or $private and isset($_COOKIE[$admin_key])
 	or $private and $local_key and isset($_COOKIE[$local_key])): ?>
 
-		<ul class="content">
+		<ul class="content grid">
 
 			<?
 								
@@ -256,13 +264,19 @@ endif;
 		var thumb_current_uri = "<?= $thumb_current_uri ?>";
 		var index_folder = "<?= $index_folder ?>";
 		var disallowed_file_types = "<?= $disallowed_file_types ?>";
+		var thumbnail_cookie_name = "<?= $thumbnail_cookie_name ?>";
+		var thumbnail_default_size = <?= $thumbnail_default_size ?>;
+		var thumbnail_min_size = <?= $thumbnail_min_size ?>;
+		var thumbnail_max_size = <?= $thumbnail_max_size ?>;
+		var thumbnail_formatting_threshold = <?= $thumbnail_formatting_threshold ?>;
 	</script>
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery.js"></script>
+	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jqueryui-drag-drop-slider.js"></script>
+	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery-cookie.js"></script>	
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/functions.js"></script>
 	
 	<? if (isset($_COOKIE[$admin_key])): ?>
 		<!-- Admin Javascript -->
-		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery-ui-drag-drop.js"></script>
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/upload.js"></script>
 		<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/admin.js"></script>
 	<? endif ?>

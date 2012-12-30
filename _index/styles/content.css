@@ -15,7 +15,18 @@
 	
 		}
 		
-	.content li {
+		
+/* Grid
+------------------------------------------------------------------------------- */		
+			
+	
+	.grid {
+	
+		visibility: hidden;
+	
+		}
+		
+	.grid li {
 	
 		float: left;
 		margin: 0 15px 20px 0;
@@ -23,7 +34,7 @@
 		
 		}
 	
-	.content a {
+	.grid a {
 	
 		display: block;
 		width: 270px;
@@ -36,22 +47,39 @@
 	
 		}
 		
-	.content .image {
+	.grid .image {
 	
 		width: 100%;
 		height: 270px;
 		line-height: 270px;
+		margin-bottom: 10px;
 	
 		}
 		
-	.content img {
+		
+	.grid a {
+		width: 100px;
+		}
+		
+	.grid .image {
+		height: 100px;
+		line-height: 100px;
+		}
+		
+	
+	.grid img {
+		max-height: 100%;
+		max-width: 100%;
+		}
+		
+	.grid img {
 	
 		vertical-align: middle;
 	
 		}
 		
-	.content strong,
-	.content input[type="text"] {
+	.grid strong,
+	.grid input[type="text"] {
 	
 		display: block;
 		width: 100%;
@@ -59,15 +87,17 @@
 		font: normal 12px/1em "Helvetica Neue", Helvetica, Arial, sans-serif;
 		text-align: center;
 		margin-bottom: 5px;
-		
 		-webkit-appearance: none;
 		border: none;
 		background: transparent;
 		outline: none;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	
 		}
 		
-	.content em {
+	.grid em {
 	
 		display: block;
 		position: absolute;
@@ -81,16 +111,16 @@
 
 		}
 		
-	.content span {
+	.grid span {
 	
 		display: block;
 		position: absolute;
 		bottom: -20px;
 		right: 10%;
-		width: 40%;
 		font-style: normal;
 		color: #444;
 		text-align: right;
+		font-size: 10px;
 		display: none;
 	
 		}
@@ -99,30 +129,47 @@
 /* Hover */
 
 			
-	.content a:hover {
+	.grid a:hover {
 
 		color: #ccc;
 		background: #222;
 
 		}
 		
-	.content a:hover em {
+	.grid a:hover em {
 	
 		display: block;
 
 		}
 		
-	.content a:hover span {
+	.grid a:hover span {
 	
 		display: block;
 	
 		}
-			
+		
+		
+/* Small */		
+		
+		
+	.grid.small span,
+	.grid.small em {
+	
+		display: none !important;
+		
+		}
+		
+	.grid.small strong,
+	.grid.small input[type="text"] {
+	
+		font-size: 10px;
+		
+		}
 
 /* Drag/Drop */		
 		
 
-	.content .over a {
+	.grid .over a {
 	
 		border-color: #555;
 	
@@ -139,13 +186,13 @@
 /* Renaming */
 
 
-	.content .renaming strong {
+	.grid .renaming strong {
 	
 		visibility: hidden;
 	
 		}
 		
-	.content input[type="text"] {
+	.grid input[type="text"] {
 	
 		position: absolute;
 		bottom: 0;
