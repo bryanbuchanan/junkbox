@@ -2,7 +2,7 @@
 
 if (!empty($_POST) and $_POST['target'] != ""):
 
-	include "../config.php";
+	include "../_config.php";
 	include "../library/functions.php";
 
 	$target = "$home_folder/" . $_POST['target'];

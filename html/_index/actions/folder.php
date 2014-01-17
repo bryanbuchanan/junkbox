@@ -2,7 +2,7 @@
 
 if (!empty($_POST)):
 
-	include "../config.php";
+	include "../_config.php";
 	include "../library/functions.php";
 
 	$folder = $_POST['folder'];

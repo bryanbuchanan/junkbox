@@ -5,7 +5,7 @@ ini_set("memory_limit", "200M");
 
 if ($_POST):
 
-	include "../config.php";
+	include "../_config.php";
 	include "../library/functions.php";
 
 	// Get file details

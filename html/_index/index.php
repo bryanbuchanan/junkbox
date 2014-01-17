@@ -1,6 +1,6 @@
 <?
 
-include "config.php";
+include "_config.php";
 include "library/functions.php";
 
 /* Initial Setup

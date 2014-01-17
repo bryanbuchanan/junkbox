@@ -2,7 +2,7 @@
 
 if (isset($_POST)):
 
-	include "../config.php";
+	include "../_config.php";
 	include "../library/functions.php";
 	
 	// Admin

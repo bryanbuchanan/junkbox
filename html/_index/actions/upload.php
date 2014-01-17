@@ -2,7 +2,7 @@
 
 if ($_POST):
 
-	include "../config.php";
+	include "../_config.php";
 	include "../library/functions.php";
 	
 	// Get posted data
