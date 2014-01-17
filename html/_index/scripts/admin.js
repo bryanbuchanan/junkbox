@@ -2,13 +2,10 @@
 /* Javascript
 ----------------------------------------------------------------------------- */
 	
-	
 	var admin = new Object();
-
 
 /* New Folder
 ----------------------------------------------------------------------------- */
-
 
 	admin.newFolder = function() {
 
@@ -22,10 +19,8 @@
 	
 	};
 
-
 /* Right Click
 ----------------------------------------------------------------------------- */
-
 
 	admin.rightClick = function() {
 	
@@ -40,6 +35,9 @@
 		});
 	
 		$('.content > li').bind('contextmenu', function(event) {
+
+			// Disable menu (doesn't work)
+			// event.preventDefault(); 
 
 			// Remove existing menus
 			$('#menu').remove();
@@ -76,33 +74,24 @@
 	
 	};
     
-    
 /* Websafe names
 ----------------------------------------------------------------------------- */
   
- 	
  	admin.safeName = function(name) {
- 	
 		var name = name.toLowerCase();
 		var name = name.replace(/\&/ig, "and");
 		var name = name.replace(/[^a-z0-9\-\s._]/ig, "");
 		var name = name.replace(/(^\s+|\s+$)/g, "");
 		var name = name.replace(/\s+/ig, "-");
-		
 		return name;
- 	
  	};
- 	
  	 
 /* Rename
 ----------------------------------------------------------------------------- */
- 
 
 	admin.rename = new Object();
 
-
 /* Show renaming fields */
-
 
  	admin.rename.initiate = function() {
  	
@@ -111,6 +100,7 @@
  		var action = home_uri + "/" + index_folder + "/actions/rename.php";
  		var name = $listItem.find('strong').text();
  		
+ 		// Add class
  		$listItem.addClass('renaming');
  		
  		// Create form
@@ -120,20 +110,32 @@
  		// Autofocus
  		$form.find('input').focus();
  		
+ 		// Close context menu
+ 		$('#menu').remove();
+
+		$('#rename').submit(admin.rename.submit);
+		$('#rename input').blur(admin.rename.submit);
+
  		return false;
 
  	};
  	
- 	
- /* Submit new name */
+/* Submit new name */
  
- 	
  	admin.rename.submit = function() {
  	
- 		var $listItem = $(this).closest('li');
- 		var action = $(this).attr('action');
+ 		log('submit');
+ 		
+ 		if ($(this).is('input')) {
+ 			var $this = $(this).closest('form');
+ 		} else {
+ 			var $this = $(this);
+ 		}
+ 	
+ 		var $listItem = $this.closest('li');
+ 		var action = $this.attr('action');
  		var old_name = $listItem.find('strong').text();
- 		var new_name = $(this).find('input').val();
+ 		var new_name = $this.find('input').val();
  		
  		// Make sure new name is web safe
  		var new_name = admin.safeName(new_name);
@@ -143,6 +145,7 @@
  			new_name: new_name,
  			current_path: current_path
  		}, function(data) {
+ 			log(data); 		
  			var name = data.message;
  			$listItem.find('strong').text(name);
  			$listItem.find('a').attr('href', name);
@@ -154,10 +157,8 @@
  	
  	};
  
-	
 /* Delete
 ----------------------------------------------------------------------------- */
-	
 	
 	admin.delete = function() {
 	
@@ -236,10 +237,8 @@
 				
 	};
 	
-	
 /* Move
 ----------------------------------------------------------------------------- */
-	
 	
 	admin.move = function() {
 
@@ -255,35 +254,42 @@
 			hoverClass: 'over',
 			drop: function(event, ui) {
 				
+				log(event);
+				log(ui);
+				
+				var $dropped = $(ui.draggable.context);
+				var $target = $(event.target);
+				
 				// Get file locations
-				var file = $(event.srcElement).closest('li').find('a').attr('href');
+				var file = $dropped.find('a').attr('href');
 				var old_location = current_path + "/" + file;
-				var new_location = current_path + "/" + $(event.target).find('a').attr('href') + "/" + file;
-								
+				var new_location = current_path + "/" + $target.find('a').attr('href') + "/" + file;
+				
+				log(file);
+						
 				// Remove moved item
-				$(event.srcElement).closest('li').remove();
+				$dropped.remove();
 				
 				// Move item
-				$.post(home_uri + '/' + index_folder + '/actions/move.php', {
+				var action = home_uri + '/' + index_folder + '/actions/move.php';
+				$.post(action, {
 					old_location: old_location,
 					new_location: new_location
 				}, function(data) {
 				
 					log(data);
 				
-				});
+				}, 'json');
 				
 			}
 			
 		});
 	
 	};
-	
 		
 /* Timeline
 ----------------------------------------------------------------------------- */
 	
-
 	$(document).ready(function() {
 		
 		// New folder
@@ -293,11 +299,10 @@
 		admin.rightClick();
 		
 		// Delete
-		$('a.delete').live('click', admin.delete);
+		$('body').on('click', 'a.delete', admin.delete);
 		
 		// Rename
-		$('a[href="#rename"]').live('click', admin.rename.initiate);
-		$('#rename').live('submit', admin.rename.submit);
+		$('body').on('click', 'a[href="#rename"]', admin.rename.initiate);
 		
 		// Upload
 		$('input[type="file"]').change(upload.selectFile);

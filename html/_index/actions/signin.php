@@ -6,13 +6,13 @@ if (!empty($_POST)):
 	include "../library/functions.php";
 
 	// Admin login
-	if (isset($admin)):
-		foreach ($admin as $account):
-			if (strtolower($_POST['name']) == strtolower($account[0])
-			and $_POST['password'] == $account[1]):
+	if (isset($admins)):
+		foreach ($admins as $account):
+			if (strtolower($_POST['name']) == strtolower($account->name)
+			and $_POST['password'] == $account->password):
 				setcookie($admin_key, true, time() + 7200, '/');
 				header('Location: ' . $_SERVER['REQUEST_URI']);
-				die();
+				exit;
 			endif;
 		endforeach;
 	endif;
@@ -27,7 +27,7 @@ if (!empty($_POST)):
 		and $_POST['password'] == $local_restriction['password']):
 			setcookie("junkbox-" . $local_restriction['key'], true, time() + 7200, '/');
 			header('Location: ' . $_SERVER['REQUEST_URI']);
-			die();
+			exit;
 		endif;
 	endif;
 	

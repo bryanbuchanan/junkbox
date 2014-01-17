@@ -108,7 +108,7 @@ endif;
 
 			<li id="signout"><a class="button" href="<?= $home_uri ?>/<?= $index_folder ?>/actions/signout.php?key=<?= $local_key ?>">Sign Out</a></li>
 
-		<? elseif (isset($admin)): ?>
+		<? elseif (isset($admins)): ?>
 			
 			<li id="signin">
 			
@@ -276,7 +276,12 @@ endif;
 		var thumbnail_formatting_threshold = <?= $thumbnail_formatting_threshold ?>;
 	</script>
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery.js"></script>
-	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jqueryui-drag-drop-slider.js"></script>
+	
+	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery-ui.js"></script>
+	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery.ui.slider.js"></script>
+	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery.ui.draggable.js"></script>
+	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery.ui.droppable.js"></script>
+
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/jquery-cookie.js"></script>	
 	<script src="<?= $home_uri ?>/<?= $index_folder ?>/scripts/functions.js"></script>
 	

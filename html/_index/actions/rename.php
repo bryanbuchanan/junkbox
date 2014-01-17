@@ -12,8 +12,10 @@ if (!empty($_POST)):
  	
  	// Disallowed file types
  	$pathinfo = pathinfo($new_name);
- 	$type = strtolower($pathinfo['extension']);
- 	if (stripos($disallowed_file_types, $type)) $new_name .= ".txt";
+ 	if (isset($pathinfo['extension'])):
+ 		$type = strtolower($pathinfo['extension']);
+ 		if (stripos($disallowed_file_types, $type)) $new_name .= ".txt";
+ 	endif;
  	
  	if (!empty($old_name) and !empty($new_name)):
 		$old_file = "$home_folder/$current_path/$old_name";

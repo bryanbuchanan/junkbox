@@ -185,7 +185,7 @@
 		
 /* Renaming */
 
-
+		
 	.grid .renaming strong {
 	
 		visibility: hidden;
@@ -193,17 +193,22 @@
 		}
 		
 	.grid input[type="text"] {
-	
+
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
+		
+		width: 90%;
 		color: #fff;
 		border: 1px dashed #555;
 		border-radius: 5px;
-		padding: 7px;
-		width: auto;
+		padding: 7px 5%;
 		margin: 0;
+		-webkit-appearance: none;
+		appearance: none;
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
 	
 		}
 	
