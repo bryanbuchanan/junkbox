@@ -7,7 +7,7 @@ include "library/functions.php";
 ------------------------------------------------------------ */
 
 $current_htaccess_content = is_file("../.htaccess") ? file_get_contents("../.htaccess", true) : "";
-$correct_htaccess_content = "Options Indexes FollowSymLinks\nDirectoryIndex " . $_SERVER['PHP_SELF'];
+$correct_htaccess_content = "DirectoryIndex " . $_SERVER['PHP_SELF'];
 
 // Create .htaccess file if it doesn't exist or is incorrect
 if ($current_htaccess_content != $correct_htaccess_content):
