@@ -8,8 +8,8 @@ if (!empty($_POST)):
 	// Admin login
 	if (isset($admins)):
 		foreach ($admins as $account):
-			if (strtolower($_POST['name']) == strtolower($account->name)
-			and $_POST['password'] == $account->password):
+			if (strtolower($_POST['name']) === strtolower($account->name)
+			and md5($_POST['password']) === $account->password):
 				setcookie($admin_key, true, time() + 7200, '/');
 				header('Location: ' . $_SERVER['REQUEST_URI']);
 				exit;
