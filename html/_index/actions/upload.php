@@ -15,7 +15,7 @@ if ($_POST):
 
 	// Allowable file types
 	$type = isset($path_info['extension']) ? strtolower($path_info['extension']) : "";
-	if ($type == "jpeg") $type = "jpg";
+	if ($type === "jpeg") $type = "jpg";
 	if (stripos($disallowed_file_types, $type)) $name .= ".txt";
 	
 	// New file location

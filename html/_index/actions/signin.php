@@ -23,8 +23,8 @@ if (!empty($_POST)):
 		$current_folder = "$home_folder/" . $_POST['local_password'];		
 		$local_restriction = find_password($current_folder, $_POST['nest_depth']);
 		// Compare credentials
-		if (strtolower($_POST['name']) == strtolower($local_restriction['name'])
-		and $_POST['password'] == $local_restriction['password']):
+		if (strtolower($_POST['name']) === strtolower($local_restriction['name'])
+		and $_POST['password'] === $local_restriction['password']):
 			setcookie("junkbox-" . $local_restriction['key'], true, time() + 7200, '/');
 			header('Location: ' . $_SERVER['REQUEST_URI']);
 			exit;

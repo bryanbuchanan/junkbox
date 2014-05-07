@@ -96,7 +96,7 @@ endif;
 
 	<ul id="tools">
 				
-		<? $class = "$home_uri/" == $_SERVER['REQUEST_URI'] ? "inactive" : "" ?>
+		<? $class = "$home_uri/" === $_SERVER['REQUEST_URI'] ? "inactive" : "" ?>
 		<li id="back" class="<?= $class ?>"><a class="button" href="../"><span>Back</span></a></li>
 
 		<? if (isset($_COOKIE[$admin_key])): ?>
@@ -158,7 +158,7 @@ endif;
 				and $file != ".DS_Store"
 				and $file != ".git"
 				and $file != ".gitignore"
-				and substr_count($file, ".pureftpd") == 0):
+				and substr_count($file, ".pureftpd") === 0):
 					$random_key = rand(100,999);
 					$date = filemtime("$current_folder/$file");
 					$files[$date.$random_key] = $file;
@@ -166,14 +166,14 @@ endif;
 			endwhile;
 			
 			// Sort
-			if ($sort == "name"):
+			if ($sort === "name"):
 				natcasesort($files);
 			else:
 				ksort($files);
 			endif;
 			
 			// Order
-			if ($order == "desc") $files = array_reverse($files, true);
+			if ($order === "desc") $files = array_reverse($files, true);
 								
 			// Create folder for thumbnails, if it doesn't already exist
 			if (!is_dir($thumb_home_folder)) mkdir($thumb_home_folder);
