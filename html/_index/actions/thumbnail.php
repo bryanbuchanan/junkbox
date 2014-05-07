@@ -23,10 +23,10 @@ if ($_POST):
 	if (!is_file($thumbnail)
 	or filemtime($original) > filemtime($thumbnail)):
 				
-		if ($ext == "jpg"
-		or $ext == "jpeg"
-		or $ext == "gif"
-		or $ext == "png"):
+		if ($ext === "jpg"
+		or $ext === "jpeg"
+		or $ext === "gif"
+		or $ext === "png"):
 	
 			$image_stats = GetImageSize($original); 
 			$org_w = $image_stats[0]; 
@@ -41,12 +41,9 @@ if ($_POST):
 			endif;
 			
 			// Grab graphics from original file
-			if ($ext == "jpg" or $ext == "jpeg"): $src_img = imagecreatefromjpeg($original);
-			elseif ($ext == "gif"): $src_img = imagecreatefromgif($original); 
-			elseif ($ext == "png"): $src_img = imagecreatefrompng($original); 
-			elseif ($ext == "psd"):
-				include_once('includes/classPhpPsdReader.php');
-				$src_img = imagecreatefrompsd($original);
+			if ($ext === "jpg" or $ext === "jpeg"): $src_img = imagecreatefromjpeg($original);
+			elseif ($ext === "gif"): $src_img = imagecreatefromgif($original); 
+			elseif ($ext === "png"): $src_img = imagecreatefrompng($original); 
 			else:
 				echo "no extension";
 			endif;
