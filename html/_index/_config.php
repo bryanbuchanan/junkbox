@@ -11,7 +11,6 @@ $thumbnail_default_size = 175;
 
 // Admin Accounts
 // Passwords must be encrypted using the md5 hash. Example: md5('password')
-// http://resen.co/pw
 $admins = array(
 	(object) array(
 		"name" => "name",

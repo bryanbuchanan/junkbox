@@ -6,7 +6,7 @@ Junkbox is a file browser and manager written in PHP intended to share and manag
 
 ## Demo
 
-1. Go to http://junkbox.resen.co and view the file browser.
+1. Go to http://junkbox.resen.co.
 2. To use it as an admin, sign in with the name "admin" and password "password".
 
 ## Installation
@@ -33,7 +33,7 @@ $admins = array(
 );
 ```
 
-Admin passwords must be encrypted using PHP's md5 function. You can do so here <http://resen.co/pw>.
+As an added layer of security, admin passwords must be encrypted using PHP's md5 function. The package includes a page that can encrypt your passwords for you at `http://URL_TO_YOUR_FOLDER/_index/actions/password.php`.
 
 ## Limiting Access
 
