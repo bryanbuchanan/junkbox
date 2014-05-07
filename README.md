@@ -9,6 +9,11 @@ Junkbox is a file browser and manager written in PHP intended to share and manag
 1. Go to http://junkbox.resen.co.
 2. To use it as an admin, sign in with the name "admin" and password "password".
 
+## Dependencies
+
+- PHP 5
+- GD Library
+
 ## Installation
 
 1. Put the `_index` folder inside the folder you'd like to share.
