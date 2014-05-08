@@ -1,6 +1,6 @@
 # Junkbox
 
-Junkbox is a file browser and manager written in PHP intended to share and manage files in a presentable way.
+Junkbox is a file browser/manager that was designed to allow lazy, computer-stupid clients to manage *some* files on their web server without having to try too hard, and without the ability to screw things up.
 
 ![Junkbox](https://raw.github.com/bryanbuchanan/junkbox/master/screenshot.png)
 
@@ -9,13 +9,14 @@ Junkbox is a file browser and manager written in PHP intended to share and manag
 1. Go to http://junkbox.resen.co.
 2. To use it as an admin, sign in with the name "admin" and password "password".
 
-## Dependencies
-
-- PHP 5
-- GD Library
-
 ## Installation
 
+#### Dependencies
+- PHP 5
+- .htaccess support / AllowOverride
+- GD Library
+
+#### Process
 1. Put the `_index` folder inside the folder you'd like to share.
 2. Visit `http://URL_TO_YOUR_FOLDER/_index/index.php` in your web browser.
 
