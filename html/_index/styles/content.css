@@ -83,7 +83,7 @@
 	
 		display: block;
 		width: 100%;
-		color: #555;
+		color: #888;
 		font: normal 12px/1em "Helvetica Neue", Helvetica, Arial, sans-serif;
 		text-align: center;
 		margin-bottom: 5px;
@@ -105,7 +105,7 @@
 		left: 10%;
 		width: 40%;
 		font-style: normal;
-		color: #444;
+		color: #888;
 		text-align: left;
 		display: none;
 
@@ -118,7 +118,7 @@
 		bottom: -20px;
 		right: 10%;
 		font-style: normal;
-		color: #444;
+		color: #888;
 		text-align: right;
 		font-size: 10px;
 		display: none;
